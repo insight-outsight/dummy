@@ -5,4 +5,4 @@
  * @author xu
  *
  */
-package sp.gamma;
+package jdk7.newfeatures;
