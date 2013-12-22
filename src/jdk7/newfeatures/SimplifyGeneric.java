@@ -13,7 +13,7 @@ public class SimplifyGeneric {
 		//可以简化为
 		Map<String, List<String>> myMap = new HashMap<>();
 		System.out.println(myMap.size());
-		System.out.println("bad girl.1990");
+		System.out.println("bad girl.1990\r\nbye bye Alaska");
 	}
 
 }
