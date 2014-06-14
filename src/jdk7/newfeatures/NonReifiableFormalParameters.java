@@ -29,7 +29,7 @@ import java.util.List;
     warning: [varargs] Possible heap pollution from parameterized vararg type 
  
             在jdk7之前，当你调用一个含有非具体化参数的可变参数方法，你必须自行保证不会发生“heap pollution”。
-            这有一个问题，如果调用者对方法不熟悉，他根本无法判断。JDK7对此做了改进，在该方法被定义时久发出警告
+            这有一个问题，如果调用者对方法不熟悉，他根本无法判断。JDK7对此做了改进，在该方法被定义时就发出警告
  
            要消除警告，可以有三种方式
 	1.加 annotation @SafeVarargs
@@ -39,7 +39,6 @@ import java.util.List;
 public class NonReifiableFormalParameters {
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 
 	}
 
