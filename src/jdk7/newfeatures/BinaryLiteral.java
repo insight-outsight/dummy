@@ -36,8 +36,7 @@ public class BinaryLiteral {
 		
 		String lint = "revoke,question mark";
 		System.out.println(lint);
-		
-		System.out.println("'imnothing.'");
+
 	}
 
 }

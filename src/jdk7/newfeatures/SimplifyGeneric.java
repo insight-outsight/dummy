@@ -14,6 +14,7 @@ public class SimplifyGeneric {
 		Map<String, List<String>> myMap = new HashMap<>();
 		System.out.println(myMap.size());
 		System.out.println("bad girl.1990\r\nbye bye Alaska");
+		
 	}
 
 }
