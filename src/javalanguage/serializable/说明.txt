@@ -1,0 +1,8 @@
+对象序列化和反序列化研究
+java.io.ObjectInputStream;  
+java.io.ObjectOutputStream;
+
+Java中ObjectInputStream 与 ObjectOutputStream这两个包装类可用于输入流中读取对象类数据和
+将对象类型的数据写入到底层输入流 。ObjectInputStream 与 ObjectOutputStream 类所读写的对象
+必须实现了 Serializable 接口。
+需要注意的是：对象中的 transient 和 static 类型的成员变量不会被读取和写入 。

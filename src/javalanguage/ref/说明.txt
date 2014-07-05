@@ -1,0 +1,80 @@
+java.lang.ref引用包学习
+
+**************************************************************
+对象可达性(Reachability)
+Going from strongest to weakest, the different levels of reachability reflect the life cycle of an object. They are operationally defined as follows: 
+
+An object is strongly reachable if it can be reached by some thread without traversing any reference objects. A newly-created object is strongly reachable by the thread that created it. 
+An object is softly reachable if it is not strongly reachable but can be reached by traversing a soft reference. 
+An object is weakly reachable if it is neither strongly nor softly reachable but can be reached by traversing a weak reference. When the weak references to a weakly-reachable object are cleared, the object becomes eligible for finalization. 
+An object is phantom reachable if it is neither strongly, softly, nor weakly reachable, it has been finalized, and some phantom reference refers to it. 
+
+Finally, an object is unreachable, and therefore eligible for reclamation, when it is not reachable in any of the above ways. 
+**************************************************************
+
+
+**************************************************************
+ 垃圾回收三步曲：finalizable, finalized, and then reclaimed.
+**************************************************************
+
+----------------------------
+             强引用
+----------------------------
+
+----------------------------
+             软引用(SoftReference)
+----------------------------
+
+ 软引用所引用的对象（即软可达对象），垃圾回收器运行时会根据内存充裕与否，斟酌决定是否回收它。通常用于实现内存敏感型缓存。
+
+假定某时刻，垃圾回收器探测到一个对象是软可达的，那么此时垃圾回收器可以选择（但不一定会，虚拟机保证在抛出
+ OutOfMemoryError之前清除软可到达对象的所有软引用）自动清除该对象的所有软引用及其它软可达对象（
+ 该对象通过这些软可达对象经由强引用链是可到达的）的所有软引用。清除的方式是把软引用中的referent即软
+ 可达对象赋值为null。例如：
+	    Object obj = new Object(); 
+	    B b = new B(obj);
+	 
+	    SoftReference<Object> softRef = new SoftReference<Object>(obj);  
+	    SoftReference<B> softRefB = new SoftReference<B>(b); 
+	    obj = null; //此时obj成为软可达对象,GC可以清除它的软引用softRef
+	    b = null;   //此时b成为软可达对象,GC可以清除它的引用对象softRefB
+	   
+	    class B {
+	    	private Object obj;
+	    	public B(){}
+	    	public B(Object obj){this.obj = obj;}
+	    }
+,当垃圾回收线程真正执行时，将回收软引用所引用的对象内存空间。与此同时，或者稍后，垃圾回收器
+会将这些新清除的软可到达对象的软引用加入到一个关联(创建软引用时注册关联的，也可能没有)的引用队列
+（该队列通过解除该软引用与该队列的关系，让GC从内存清除软引用对象本身）。
+
+只要软引用所引用的对象是强可达的，软引用就不会被清除。
+
+
+----------------------------
+             弱引用(WeakReference)
+----------------------------
+
+弱引用所引用的对象（即弱可达对象）不会阻止阻止垃圾回收器终结、回收其所点空间，弱引用常被用于实现标准的对象映射。
+
+假定某时刻，垃圾回收器探测到一个对象是弱可达的，那么此时它将会自动清除该对象的所有弱引用及其它弱可达对象
+（该对象通过这些软可达对象经由强引用链或软引用链是可到达的）的所有弱引用。清除的方式是把弱引用中的referent
+即弱可达对象赋值为null。与此同时，垃圾回收器将标记之前的弱可达对象为可终结的。
+当弱可达对象的弱引用被清理完成之后，该弱可达对象已具备了被终结并回收的条件。(When 
+the weak references to a weakly-reachable object are cleared, the object 
+becomes eligible for finalization.),当垃圾回收线程真正执行时，将回收弱引用所引用的对象。
+与此同时，或者稍后，垃圾回收器会将这些新清除的弱可到达对象的弱引用加入到一个关联(创建弱引用时注册关联的，
+也可能没有)的引用队列（该队列通过解除该弱引用与该队列的关系，让GC从内存清除软弱用对象本身）。
+
+----------------------------
+             影子引用(PhantomReference)
+----------------------------
+Phantom reference objects, which are enqueued after the collector determines
+ that their referents may otherwise be reclaimed. Phantom references are most
+  often used for scheduling pre-mortem cleanup actions in a more flexible way
+   than is possible with the Java finalization mechanism. 
+假定某时刻，垃圾回收器探测到一个对象是影子可达的，与此同时，或者稍后，垃圾回收器会将这些引用注册到一个关联的引用队列。
+永远不应该调用影子引用的get方法，因为它总是返回null,因为其引用的对象已被回收。
+一个对象影子可达的，证明它已被垃圾回收器回收，只有影子引用在引用它。
+创建影子引用时必须关联一个引用队列。当影子引用它们被加入引用队列时，不像软引用、弱引用，影子引用不会被垃圾回收器自动清除。
+通过影子引用可到达的对象保持影子可到达直到它的所有影子被清除或者它的所有影子引用对象本身变成不可达。
