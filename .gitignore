@@ -6,6 +6,4 @@
 *.jar
 *.war
 *.ear
-/.project
 /.settings
-/.classpath
