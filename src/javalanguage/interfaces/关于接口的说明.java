@@ -1,7 +1,6 @@
 package javalanguage.interfaces;
 
-import java.lang.String;
-import java.util.Properties;
+
 
 public class 关于接口的说明 {
 
