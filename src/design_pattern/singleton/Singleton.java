@@ -14,7 +14,7 @@ public class Singleton  implements Serializable {
 	private Singleton(){
 		System.out.println("singleton开始时间"+System.currentTimeMillis());
 		try {
-			Thread.sleep(3000);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
 		}

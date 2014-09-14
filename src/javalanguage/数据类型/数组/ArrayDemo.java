@@ -1,5 +1,8 @@
 package javalanguage.数据类型.数组;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ArrayDemo {
 
 	public static void main(String[] args) {
@@ -70,6 +73,41 @@ public class ArrayDemo {
        	 * stu[0].getName();
          * xiaoming.getName();
          */
+        
+        System.out.println("--------------以下测试数组类型---------------");
+        System.out.println(String.class);
+        System.out.println(Integer.class);
+        System.out.println(Long.class);
+        System.out.println(Double.class);
+        System.out.println(Object.class);
+        System.out.println(int.class);
+        System.out.println(long.class);
+        System.out.println(double.class);
+        System.out.println(int[].class);
+        System.out.println(long[].class);
+        System.out.println(float[].class);
+        System.out.println(double[].class);
+        System.out.println(long[].class.getSimpleName());
+        System.out.println(String[].class);
+        System.out.println(String[].class.getName());
+        System.out.println(String[].class.getSimpleName());
+        
+        Long[] o = new Long[2];
+        o[0]=9l;
+        System.out.println(o[0]);
+        int[] a5 = new int[3];
+        System.out.println(a5 instanceof int[]);
+        Integer[] u7 = new Integer[7];
+        System.out.println(u7 instanceof Number[]);  
+        Number[] n7 = new Integer[7];
+        System.out.println(n7 instanceof Number[]);
+        System.out.println(n7 instanceof Integer[]);  
+        
+        Object[] o7 = new Object[7];
+        System.out.println(o7 instanceof Object[]);
+        System.out.println(o7 instanceof String[]);
 	}
+	
+	
 	
 }

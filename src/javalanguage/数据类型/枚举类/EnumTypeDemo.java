@@ -9,6 +9,11 @@ import commons.pojo.User;
  * 比如枚举可以实现接口(但不能继承类)、定义方法等等。为了保证枚举类型像Java规范中所说的那样，每一个枚举类
  * 型极其定义的枚举变量在JVM中都是唯一的，在枚举类型的序列化和反序列化上，Java做了特殊的规定。
  * 
+ * 几点说明
+ * 1.枚举类型都是java.lang.Enum的子类
+ * 2.枚举类型的定义必须是default、public的，默认值default
+ * 3.枚举类型构造器必须是private的，这也是默认值
+ * 
  * 参考 ：http://mysun.iteye.com/blog/1581119
  * @author zcx
  *
@@ -37,7 +42,7 @@ public enum EnumTypeDemo {
 	
 	@Override
 	public String toString() {
-		return "调用toString()返回字符串是：" + this.meaning + "," + this.value;
+		return "调用toString()返回字符串是：" + this.name() +","+ this.meaning + "," + this.value;
 	}
 	
     public static EnumTypeDemo valueOf(int value) {
@@ -49,13 +54,18 @@ public enum EnumTypeDemo {
         return null;
     }
     
+    public void sayHello(){
+    	System.out.println("Hello,i am "+name());
+    }
+    
 	public static void main(String[] args) {
 		System.out.println(EnumTypeDemo.MT.getMeaning());
 		EnumTypeDemo zsn = EnumTypeDemo.MT;
+		zsn.sayHello();
 		System.out.println(zsn.getValue());
 		System.out.println(EnumTypeDemo.valueOf(EnumTypeDemo.class, "HT").getMeaning());
 		System.out.println(EnumTypeDemo.valueOf(5));
-		
+
 		//实验枚举序列化后与原对象是同一个，==操作返回true
 		EnumTypeDemo em = EnumTypeDemo.HT;
 		String fileLocation = System.getenv("TMP")+"\\6.txt";

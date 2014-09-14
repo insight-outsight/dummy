@@ -34,6 +34,15 @@ public class SExtd extends SBase {
 		SExtd sextd = new SExtd("往昔是枷锁"); 
 		System.out.println(sextd.getSExtdNM());
 		System.out.println(sextd.getNm());
+		
+		long[] o5 = new long[5];
+		int i3= 22;
+		long l3 = 99l;
+		i3 = (int)l3;
+		System.out.println(i3);
+		for(int i=0;i<o5.length;i++){
+			System.out.println(o5[i]);
+		}
 	}
 
 

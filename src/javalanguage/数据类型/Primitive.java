@@ -100,6 +100,9 @@ public class Primitive {
 		byte sll4 = (byte)0x80;
 		System.out.println("```"+sll4);
 		
+		
+		double dc = 288888888888d;
+		System.out.println(dc);
 	}
 	
 }
