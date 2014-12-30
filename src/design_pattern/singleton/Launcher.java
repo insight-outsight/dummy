@@ -1,6 +1,6 @@
 package design_pattern.singleton;
 
-public class Launch {
+public class Launcher {
 
 	/**
 	 * @param args

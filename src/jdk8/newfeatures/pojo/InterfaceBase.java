@@ -1,6 +1,6 @@
-package jdk8.jsr335.newinterfaces;
+package jdk8.newfeatures.pojo;
 
-public interface Interface0 {
+public interface InterfaceBase {
 
 	default void defaultMethod(){
 		System.out.println("Interface0默认方法被调用了");

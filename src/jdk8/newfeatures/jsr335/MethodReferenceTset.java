@@ -1,4 +1,4 @@
-package jdk8.jsr335.lambda;
+package jdk8.newfeatures.jsr335;
 
 import java.awt.FlowLayout;
 import java.awt.event.ActionEvent;
@@ -47,6 +47,6 @@ public class MethodReferenceTset {
      */
     public static void doSomething(ActionEvent e) {
          
-        System.out.println("这里是方法引用实现方式");
+        System.out.println("这里是方法引用实现方式"+e.getActionCommand());
     }
 }

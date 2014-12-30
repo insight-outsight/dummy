@@ -1,4 +1,4 @@
-package jdk8.jsr335.lambda;
+package jdk8.newfeatures.jsr335;
 
 /** 
  * 测试lambda表达式 
