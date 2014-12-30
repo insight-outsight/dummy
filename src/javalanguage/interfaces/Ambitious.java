@@ -6,7 +6,7 @@ public class Ambitious implements Ambiguous{
 
 	@Override
 	public void doInfringe() {
-		// TODO Auto-generated method stub
+		System.out.println("be quiet");
 		
 	}
 
