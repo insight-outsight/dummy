@@ -58,9 +58,7 @@ public class StreamTset {
 		 // "aaa1", "aaa2"
 
 	/*	 需要注意的是，排序只创建了一个排列好后的Stream，而不会影响原有的数据源，排序之后原数据stringCollection是不会被修改的：*/
-
-		 System.out.println(stringCollection);
-		 // ddd2, aaa2, bbb1, aaa1, bbb3, ccc, bbb2, ddd1
+		 System.out.println(stringCollection); // ddd2, aaa2, bbb1, aaa1, bbb3, ccc, bbb2, ddd1
 
 
 	/*	 Map 映射

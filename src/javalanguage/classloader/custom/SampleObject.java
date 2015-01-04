@@ -11,15 +11,17 @@ public class SampleObject {
     
     public void setSample(Object obj){
         this.instance = (SampleObject)obj;
-        System.out.println("set SampleObject.");
+        System.out.println("set SampleObject .");
     }
 
     public void createSampleObjectField() throws ClassNotFoundException, 
     InstantiationException, IllegalAccessException, 
     NoSuchMethodException, SecurityException, 
     IllegalArgumentException, ReflectiveOperationException{
-    	System.out.println("SampleObject.getClass().getClassLoader()="+getClass().getClassLoader());
-    	Class sofClass = Class.forName("javalanguage.classloader.custom.SampleObjectField");
+    	System.out.println("SampleObject's Context ClassLoader is ["+Thread.currentThread().getContextClassLoader()+"]");
+    	System.out.println("SampleObject.getClass().getClassLoader() is ["+getClass().getClassLoader()+"]");
+//    	Class sofClass = Class.forName("javalanguage.classloader.custom.SampleObjectField");
+    	Class sofClass = Thread.currentThread().getContextClassLoader().loadClass("javalanguage.classloader.custom.SampleObjectField");
     	Object o = sofClass.newInstance();
     	Method method55 = sofClass.getMethod("setValue", String.class);
         method55.invoke(o, "v2");
@@ -32,6 +34,12 @@ public class SampleObject {
 
 	public void setSof(SampleObjectField sof) {
 		this.sof = sof;
+	}
+	
+	public void di(){
+		 SampleObjectField sof = new SampleObjectField();
+	        sof.setValue("bbbb");
+	        System.out.println(sof);
 	}
     
 } */
