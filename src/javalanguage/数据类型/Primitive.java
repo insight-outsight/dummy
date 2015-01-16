@@ -1,12 +1,13 @@
 package javalanguage.数据类型;
 
 
+
 public class Primitive {
 
 	public static void main(String[] args) {
 		int i=5;
 		long j=5;
-		System.out.println(i==j);
+		System.out.println(i==j);//true
 		String a = "gld1";
 		String b = "gld"+ 1;
 		System.out.println(a==b); //打印true
@@ -59,50 +60,88 @@ public class Primitive {
 		System.out.println("#########################################");
 		
 		//0111 1111 1111 1111 1111 1111 1111 1111
-		System.out.println(0x7fffffff);
-		
-		//1111 1111 1111 1111 1111 1111 1111 1111
-		System.out.println(0xffffffff);
-		
-		//1111 1111 1111 1111 1111 1111 1111 1110
-		System.out.println(0xfffffffe);
-		
-		//0000 0000 0000 0000 0000 0000 0000 0000
-		System.out.println(0x00000000);
+		System.out.println(0x7fffffff);//最大正数2147483647
 		
 		//1000 0000 0000 0000 0000 0000 0000 0000
-		System.out.println(0x80000000);
+		System.out.println(0x80000000);//最大正数-2147483648
 		
 		//1000 0000 0000 0000 0000 0000 0000 0001
-		System.out.println(0x80000001);
-
-		System.out.println("#########################################");
+		System.out.println(0x80000001);//-2147483647
+		
+		//1111 1111 1111 1111 1111 1111 1111 1110
+		System.out.println(0xfffffffe);//-2
+		
+		//1111 1111 1111 1111 1111 1111 1111 1111
+		System.out.println(0xffffffff);//-1
+		
+		//0000 0000 0000 0000 0000 0000 0000 0000
+		System.out.println(0x00000000);//0
+		
+		System.out.println("********************************************");
 		
 		double d = 8.9776645365376410987455435211244364365666666666666666666666666666666123450976865532424355777437676575467557645768033333333211566790886876555;
 		System.out.println(d);
+
+		double dc = 288888888888d;
+		System.out.println(dc);
 		
+		System.out.println("============================================");
 		int qh = 0x11ff;
 		byte sll = (byte)qh;
-		System.out.println(sll);
-		//1111 1111
+		//1111 1111  0xff
 		//1111 1110  减1
 		//1000 0001 取反
+		System.out.println("``"+sll);
+
 		byte sll2 = (byte)0xff;
+		//1111 1111  0xff
+		//1111 1111  减1
+		//1000 0001  取反
 		System.out.println("```"+sll2);
-		//1111 1110
+
+		byte sll3 = (byte)0xfe;
+		//1111 1110  0xff
 		//1111 1101  减1
 		//1000 0010  取反
-		byte sll3 = (byte)0xfe;
-		System.out.println("```"+sll3);
+		System.out.println("````"+sll3);
+		
 		//1000 0000
 		//1111 1111
 		//1000 0000
 		byte sll4 = (byte)0x80;
-		System.out.println("```"+sll4);
+		System.out.println("````"+sll4);
 		
+/*		wrong
+ 		int c33 = 1887;
+		char b44 = c33;*/
 		
-		double dc = 288888888888d;
-		System.out.println(dc);
+		char b2 = 'A';
+		int wb = b2;
+		System.out.println(wb); //65
+		
+		byte[] bs = "er2杉S𪚥已".getBytes();
+		System.out.println("bytesLengh-----"+bs.length);
+		try {
+			System.out.println("cp3-----"+Integer.toHexString("er2杉S𪚥已".codePointAt(3)));
+			System.out.println("cp4-----"+Integer.toHexString("er2杉S𪚥已".codePointAt(4)));
+			System.out.println("cp5-----"+Integer.toHexString("er2杉S𪚥已".codePointAt(5)));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		String bss = new String(bs);
+		System.out.println(bss);
+		System.out.println("stringLengh-----"+bss.length());
+		 
+		bs[2]="地".getBytes()[0];
+		System.out.println("bytesLengh--"+bs.length);
+		System.out.println(bss);
+		System.out.println("stringLengh--"+bss.length());
+		 
+		String bss2 = new String(bs);
+		System.out.println(bss2);
+		System.out.println("stringLengh--"+bss2.length());
+
 	}
 	
 }
