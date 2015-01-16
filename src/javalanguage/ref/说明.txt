@@ -27,10 +27,10 @@ Finally, an object is unreachable, and therefore eligible for reclamation, when 
 
  软引用所引用的对象（即软可达对象），垃圾回收器运行时会根据内存充裕与否，斟酌决定是否回收它。通常用于实现内存敏感型缓存。
 
-假定某时刻，垃圾回收器探测到一个对象是软可达的，那么此时垃圾回收器可以选择（但不一定会，虚拟机保证在抛出
- OutOfMemoryError之前清除软可到达对象的所有软引用）自动清除该对象的所有软引用及其它软可达对象（
- 该对象通过这些软可达对象经由强引用链是可到达的）的所有软引用。清除的方式是把软引用中的referent即软
- 可达对象赋值为null。例如：
+假定某时刻，垃圾回收器探测到一个对象是软可达的，那么此时垃圾回收器可以选择（但不一定会，对象是否被释放取决于垃圾收集器的算法 
+以及垃圾收集器运行时可用的内存数量。但虚拟机保证在抛出OutOfMemoryError之前清除软可到达对象的所有软引用）自动清
+除该对象的所有软引用及其它软可达对象（该对象通过这些软可达对象经由强引用链是可到达的）的所有软引用。清除的方式是把软引
+用中的referent即软可达对象赋值为null。例如：
 	    Object obj = new Object(); 
 	    B b = new B(obj);
 	 
@@ -78,3 +78,8 @@ Phantom reference objects, which are enqueued after the collector determines
 一个对象影子可达的，证明它已被垃圾回收器回收，只有影子引用在引用它。
 创建影子引用时必须关联一个引用队列。当影子引用它们被加入引用队列时，不像软引用、弱引用，影子引用不会被垃圾回收器自动清除。
 通过影子引用可到达的对象保持影子可到达直到它的所有影子被清除或者它的所有影子引用对象本身变成不可达。
+PhantomReference 类只能用于跟踪对被引用对象即将进行的收集。同样，它还能用于执行  pre-mortem  清除操作。 
+PhantomReference  必须与  ReferenceQueue  类一起使用。需要  ReferenceQueue  是因为它能够充当通知机制。当垃圾收
+集器确定了某个对象是虚可及对象时， PhantomReference  对象就被放在它的  ReferenceQueue  上。将  PhantomReference  对
+象放在  ReferenceQueue  上也就是一个通知，表明  PhantomReference  对象引用的对象已经结束，可供收集了。这使您能够刚好
+在对象占用的内存被回收之前采取行动。 Reference与 ReferenceQueue 的配合使用。
