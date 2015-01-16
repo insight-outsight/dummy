@@ -116,8 +116,12 @@ public class Primitive {
 		char b44 = c33;*/
 		
 		char b2 = 'A';
-		int wb = b2;
-		System.out.println(wb); //65
+		int wb2 = b2;
+		System.out.println(wb2); //65
+		
+		char b3 = '雪';
+		int wb3 = b3;
+		System.out.println(wb3); //38634
 		
 		byte[] bs = "er2杉S𪚥已".getBytes();
 		System.out.println("bytesLengh-----"+bs.length);
