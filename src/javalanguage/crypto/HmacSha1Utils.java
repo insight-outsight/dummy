@@ -1,4 +1,4 @@
-package java.language.crypto;
+package javalanguage.crypto;
 
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;

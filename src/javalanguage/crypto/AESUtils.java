@@ -1,4 +1,4 @@
-package java.language.crypto;
+package javalanguage.crypto;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;

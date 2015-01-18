@@ -1,4 +1,4 @@
-package java.language.crypto;
+package javalanguage.crypto;
 
 import java.util.UUID;
 
