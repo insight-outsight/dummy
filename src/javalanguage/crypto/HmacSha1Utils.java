@@ -1,6 +1,10 @@
 package javalanguage.crypto;
 
+import java.util.Base64;
+
+import javax.crypto.KeyGenerator;
 import javax.crypto.Mac;
+import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 
 
@@ -20,12 +24,15 @@ public class HmacSha1Utils{
 	 */
     public static byte[] hmacSha1B64(String message, String key) {
 		try {
-			// Get an hmac_sha1 key from the raw key bytes
+			
+/*			KeyGenerator keyGenerator = KeyGenerator.getInstance("HmacSHA1");     
+	      SecretKey secretKey = keyGenerator.generateKey(); 
+	      System.out.println("=1="+secretKey.getAlgorithm());*/
 			byte[] keyBytes = key.getBytes();//getBytes(""UTF-8")
 			SecretKeySpec signingKey = new SecretKeySpec(keyBytes, "HmacSHA1");
 
 			// Get an hmac_sha1 Mac instance and initialize with the signing key
-			Mac mac = Mac.getInstance("HmacSHA1");
+			Mac mac = Mac.getInstance(signingKey.getAlgorithm());
 			mac.init(signingKey);
 
 			// Compute the hmac on input data bytes
@@ -37,4 +44,8 @@ public class HmacSha1Utils{
 		}
 	}
 
+    public static void main(String[] args) {
+		System.out.println(Base64.getEncoder().encodeToString(hmacSha1B64("nihao", "daxuecheng")));
+	}
+    
 }
