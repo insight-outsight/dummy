@@ -1,49 +1,93 @@
 package jdk8.newfeatures;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.time.Clock;
+import java.time.Instant;
+import java.time.LocalTime;
+import java.time.ZoneId;
+import java.time.temporal.ChronoUnit;
+import java.util.Calendar;
+import java.util.Date;
+
 public class TimeAPITset {
 
 	public static void main(String[] args) {
 
+		System.out.println("==============jdk 1.8以前日期API=============");
+		
+		System.out.println("/"+System.currentTimeMillis());
+		long ts1 = 1418183985217l;
+		System.out.println("/"+new java.util.Date(ts1).getTime());
+		System.out.println("/"+new java.util.Date().getTime());//等价于System.currentTimeMillis()
+		
+		DateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss.SSS" );
+		Calendar cal = Calendar.getInstance();
+		System.out.println("当前时间："+dateFormat.format(cal.getTime()));
+	   //cal.setTime(new java.util.Date(ts1));
+	   System.out.println("年："+cal.get(Calendar.YEAR));
+	   System.out.println("月："+cal.get(Calendar.MONTH) + 1);// 月份计算是从0作为1开始的。
+	   System.out.println("日："+cal.get(Calendar.DATE));
+	   System.out.println("时："+cal.get(Calendar.HOUR));
+	   System.out.println("分："+cal.get(Calendar.MINUTE));
+	   System.out.println("秒："+cal.get(Calendar.SECOND));
+	   System.out.println("毫秒："+cal.get(Calendar.MILLISECOND));
+	   System.out.println("HOUR_OF_DAY:"+cal.get(Calendar.HOUR_OF_DAY));
+	   
+	   String oneHoursAgoTime =  "" ;
+	   cal.set(Calendar.HOUR , Calendar.HOUR -1 ) ;
+	   // cal.set(Calendar. MONTH , Calendar. MONTH -1); //当前月前一月
+	   oneHoursAgoTime = dateFormat.format(cal.getTime());
+	   System.out.println(oneHoursAgoTime);//由于时区差别出现了问题，与期望的结果不一样
+	   System.out.println("===========================================");
+	    
 /*		九、Date API
 
-		Java 8 在包java.time下包含了一组全新的时间日期API。新的日期API和开源的Joda-Time库差不多，但又不完全一样，下面的例子展示了这组新API里最重要的一些部分：
+		Java 8 在包java.time下包含了一组全新的时间日期API。新的日期API和开源的Joda-Time库差不多，但又不完全一样，下面的例子展示了这组
+		新API里最重要的一些部分：
 
 		Clock 时钟
-		Clock类提供了访问当前日期和时间的方法，Clock是时区敏感的，可以用来取代 System.currentTimeMillis() 来获取当前的微秒数。某一个特定的时间点也可以使用Instant类来表示，Instant类也可以用来创建老的java.util.Date对象。
-		复制代码 代码如下:
+		Clock类提供了访问当前日期和时间的方法，Clock是时区敏感的，可以用来取代 System.currentTimeMillis() 来获取当前的微秒数。
+		某一个特定的时间点也可以使用Instant类来表示，Instant类也可以用来创建老的java.util.Date对象。*/
 
 		Clock clock = Clock.systemDefaultZone();
 		long millis = clock.millis();
+		System.out.println(millis);
+		System.out.println(System.currentTimeMillis());
 		Instant instant = clock.instant();
 		Date legacyDate = Date.from(instant);   // legacy java.util.Date
-
-
+		System.out.println(legacyDate);
+/*
 		Timezones 时区
-		在新API中时区使用ZoneId来表示。时区可以很方便的使用静态方法of来获取到。 时区定义了到UTS时间的时间差，在Instant时间点对象到本地日期对象之间转换的时候是极其重要的。
-		复制代码 代码如下:
+		在新API中时区使用ZoneId来表示。时区可以很方便的使用静态方法of来获取到。 时区定义了到UTS时间的时间差，
+		在Instant时间点对象到本地日期对象之间转换的时候是极其重要的。*/
 
 		System.out.println(ZoneId.getAvailableZoneIds());
 		// prints all available timezone ids
+		ZoneId zoneSysDefault = ZoneId.systemDefault();
 		ZoneId zone1 = ZoneId.of("Europe/Berlin");
 		ZoneId zone2 = ZoneId.of("Brazil/East");
-		System.out.println(zone1.getRules());
-		System.out.println(zone2.getRules());
-		// ZoneRules[currentStandardOffset=+01:00]
-		// ZoneRules[currentStandardOffset=-03:00]
+		ZoneId zone3 = ZoneId.of("Asia/Shanghai");
+		System.out.println(zoneSysDefault.getId()+"   "+zoneSysDefault.getRules());
+		System.out.println(zone1.getRules());// ZoneRules[currentStandardOffset=+01:00]
+		System.out.println(zone2.getRules());// ZoneRules[currentStandardOffset=-03:00]
+		System.out.println(zone3.getId()+"   "+zone3.getRules());
 
-
-		LocalTime 本地时间
-		LocalTime 定义了一个没有时区信息的时间，例如 晚上10点，或者 17:30:15。下面的例子使用前面代码创建的时区创建了两个本地时间。之后比较时间并以小时和分钟为单位计算两个时间的时间差：
-		复制代码 代码如下:
-
+/*
+		LocalTime 本地时间，用于标识一个特定时区（使用LocalTime.now(ZoneId zone)设置该时区）当前的时间
+		LocalTime 定义了一个没有时区信息的时间，例如 晚上10点，或者 17:30:15。下面的例子使用前面代码创建的时区创建了两个本地时间。之后比较时间并以小
+		时和分钟为单位计算两个时间的时间差：*/
+		System.out.println(LocalTime.now().getHour());
 		LocalTime now1 = LocalTime.now(zone1);
 		LocalTime now2 = LocalTime.now(zone2);
+		System.out.println(now1.getHour());
+		System.out.println(now2.getHour());
 		System.out.println(now1.isBefore(now2));  // false
 		long hoursBetween = ChronoUnit.HOURS.between(now1, now2);
 		long minutesBetween = ChronoUnit.MINUTES.between(now1, now2);
 		System.out.println(hoursBetween);       // -3
-		System.out.println(minutesBetween);     // -239
-
+		System.out.println(minutesBetween);     // -180
+/*
 		LocalTime 提供了多种工厂方法来简化对象的创建，包括解析时间字符串。
 		复制代码 代码如下:
 

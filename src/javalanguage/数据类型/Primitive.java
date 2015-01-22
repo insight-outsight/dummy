@@ -56,7 +56,7 @@ public class Primitive {
 		Integer i0 = 129;
 		
 		System.out.println(i9 == i0);//true
-		
+
 		System.out.println("#########################################");
 		
 		//0111 1111 1111 1111 1111 1111 1111 1111
