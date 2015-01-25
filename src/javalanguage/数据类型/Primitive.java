@@ -1,5 +1,7 @@
 package javalanguage.数据类型;
 
+import java.io.UnsupportedEncodingException;
+
 
 
 public class Primitive {
@@ -145,6 +147,13 @@ public class Primitive {
 		String bss2 = new String(bs);
 		System.out.println(bss2);
 		System.out.println("stringLengh--"+bss2.length());
+		
+		System.out.println("e而wtr月".getBytes().length);
+		try {
+			System.out.println("e而wtr月".getBytes("UTF-8").length);
+		} catch (UnsupportedEncodingException e) {
+			e.printStackTrace();
+		}
 
 	}
 	
