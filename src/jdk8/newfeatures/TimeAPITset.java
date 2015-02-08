@@ -24,21 +24,25 @@ public class TimeAPITset {
 		DateFormat dateFormat = new SimpleDateFormat( "yyyy-MM-dd HH:mm:ss.SSS" );
 		Calendar cal = Calendar.getInstance();
 		System.out.println("当前时间："+dateFormat.format(cal.getTime()));
-	   //cal.setTime(new java.util.Date(ts1));
-	   System.out.println("年："+cal.get(Calendar.YEAR));
-	   System.out.println("月："+cal.get(Calendar.MONTH) + 1);// 月份计算是从0作为1开始的。
-	   System.out.println("日："+cal.get(Calendar.DATE));
-	   System.out.println("时："+cal.get(Calendar.HOUR));
-	   System.out.println("分："+cal.get(Calendar.MINUTE));
-	   System.out.println("秒："+cal.get(Calendar.SECOND));
-	   System.out.println("毫秒："+cal.get(Calendar.MILLISECOND));
-	   System.out.println("HOUR_OF_DAY:"+cal.get(Calendar.HOUR_OF_DAY));
+	    //cal.setTime(new java.util.Date(ts1));
+	    System.out.print("年："+cal.get(Calendar.YEAR));
+	    System.out.print("  月："+(cal.get(Calendar.MONTH) + 1));// 月份计算是从0作为1开始的。
+	    System.out.print("  日："+cal.get(Calendar.DATE));//日，比如6月显示6，而不是06
+	    System.out.print("  时："+cal.get(Calendar.HOUR));
+	    System.out.print("  分："+cal.get(Calendar.MINUTE));
+	    System.out.print("  秒："+cal.get(Calendar.SECOND));
+	    System.out.println("  毫秒："+cal.get(Calendar.MILLISECOND));
+
+		System.out.println("DAY_OF_MONTH:"+cal.get(Calendar.DAY_OF_MONTH));
+	    System.out.println("HOUR_OF_DAY:"+cal.get(Calendar.HOUR_OF_DAY));
 	   
 	   String oneHoursAgoTime =  "" ;
 	   cal.set(Calendar.HOUR , Calendar.HOUR -1 ) ;
-	   // cal.set(Calendar. MONTH , Calendar. MONTH -1); //当前月前一月
+//	   cal.set(Calendar.DATE , Calendar.DATE +1);
+	   cal.set(Calendar. MONTH , Calendar. MONTH -2); //当前月前一月
 	   oneHoursAgoTime = dateFormat.format(cal.getTime());
 	   System.out.println(oneHoursAgoTime);//由于时区差别出现了问题，与期望的结果不一样
+	   System.out.println("年："+cal.get(Calendar.YEAR)+"  月："+(cal.get(Calendar.MONTH) + 1));//由于时区差别出现了问题，与期望的结果不一样
 	   System.out.println("===========================================");
 	    
 /*		九、Date API

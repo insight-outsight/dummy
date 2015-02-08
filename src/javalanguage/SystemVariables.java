@@ -14,7 +14,9 @@ public class SystemVariables {
 /*		Properties prop=new Properties(System.getProperties());        
 		//在标准输出中输出系统属性的内容        
 		prop.list(System.out);*/
-		
+		System.out.println(System.getProperty("file.separator"));
+		System.out.println(System.getProperty("user.dir"));
+		System.out.println(System.getProperty("user.home"));
 		System.out.println(System.getProperty("java.version"));
 		
 		System.out.println(System.getProperty("java.home"));
