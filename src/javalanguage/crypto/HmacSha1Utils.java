@@ -22,7 +22,7 @@ public class HmacSha1Utils{
 	 * @param key 运算用key,比如一台服务器的特有APP_SECRET
 	 * @return
 	 */
-    public static byte[] hmacSha1B64(String message, String key) {
+    public static byte[] hmacSha1Bytes(String message, String key) {
 		try {
 			
 /*			KeyGenerator keyGenerator = KeyGenerator.getInstance("HmacSHA1");     
@@ -44,8 +44,24 @@ public class HmacSha1Utils{
 		}
 	}
 
+	/**
+	 * 计算HMAC_SHA1
+	 * @param message 待计算的消息
+	 * @param key 运算用key,比如一台服务器的特有APP_SECRET
+	 * @return
+	 */
+    public static String hmacSha1Base64(String message, String key) {
+		try {
+			byte[] bytes = hmacSha1Bytes(message, key);
+			return Base64.getEncoder().encodeToString(bytes);
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
+    
     public static void main(String[] args) {
-		System.out.println(Base64.getEncoder().encodeToString(hmacSha1B64("nihao", "daxuecheng")));
+		System.out.println(Base64.getEncoder().encodeToString(hmacSha1Bytes("nihao", "daxuecheng")));
+		System.out.println(hmacSha1Base64("nihao", "daxuecheng"));
 	}
     
 }

@@ -35,7 +35,6 @@ public class BigDecimalTset {
 		System.out.println("-------"+r3*100*r4/100);
 		System.out.println("binggo-"+
 				new BigDecimal(r3*r4).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue());
-		
 
 	}
 
