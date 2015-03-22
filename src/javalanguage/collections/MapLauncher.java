@@ -40,12 +40,13 @@ public class MapLauncher {
 		linkedMap.put("sb","4b");
 		linkedMap.put("5b","8bw44");
 		linkedMap.put("goodevening","at 2015-01-14");
+		//LinkedHashMap能保证遍历时能按put顺序,但初始化时传入的Map项保存为原顺序。
 		for(Object key :linkedMap.keySet()){
 			Object value = linkedMap.get(key);
 			System.out.print("LinkedHashMap键："+key + "		LinkedHashMap类型："+key.getClass().getName()+"        ");
 			System.out.println("LinkedHashMap值："+value + "	LinkedHashMap类型："+value.getClass().getName());
 		}
-		
+		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 		String[] dates = { "10/31/01", "01/01/01", "03/05/01", "02/04/01", "05/04/23" };
 		String[] items = { "Halloween", "New Years", "Birthday", "Anniversary", "造业!!!!!" };
 		
@@ -68,7 +69,7 @@ public class MapLauncher {
 			System.out.print(ok + "\t");
 			System.out.println(ov);
 		}
-		System.out.println("===========================*****==========================");
+		System.out.println("-------------------------------------------------------");
 		Set<String> sim = calendarMap.keySet();
 		for(String sk : sim)
 			System.out.println(sk+"[]"+calendarMap.get(sk));

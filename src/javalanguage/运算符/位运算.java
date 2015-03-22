@@ -38,7 +38,7 @@ public class 位运算 {
 	
 		System.out.println("~~~~~~~~~~~~~~~333~~~~~~~~~~~~~~~~~~~~");		
 		int b2 = 0xbffffffd;
-		System.out.println(b2);//1011 1111 1111 1111 1111 1111 1111 1101
+		System.out.println("原值:"+b2);//1011 1111 1111 1111 1111 1111 1111 1101
 		System.out.println(b2>>>1);//0101 1111 1111 1111 1111 1111 1111 1110
 		System.out.println(b2>>1);//1101 1111 1111 1111 1111 1111 1111 1110
 		System.out.println(0x5ffffffe);//0101 1111 1111 1111 1111 1111 1111 1110
