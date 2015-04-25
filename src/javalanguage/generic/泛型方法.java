@@ -45,7 +45,7 @@ public class 泛型方法 {
 		Set<String> s12 = union(s1,s2,s2);
 	}
 	
-	/**以下三个为泛型方法，注意写法**/
+	/**以下三个为泛型方法，注意写法.Plus:更经典的泛型方法见java.util.Arrays.copyOf()方法**/
 	public <T extends Object> T sm() {
 		final int et = 5;
 		return null;

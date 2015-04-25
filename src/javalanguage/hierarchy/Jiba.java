@@ -16,7 +16,7 @@ public class Jiba extends Hu {
 		this.d = d;
 		System.out.println("---------Jiba(int d)对象结束实例化了-------");
 	}
-	
+
 	public int getS(){
 		System.out.println("called Jiba.getS()");
 		return this.s;
