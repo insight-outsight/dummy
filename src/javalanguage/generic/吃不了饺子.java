@@ -2,6 +2,7 @@ package javalanguage.generic;
 
 public class 吃不了饺子 {
 
+
 	// Generic singleton factory pattern
 	private static 看电影去<Object> IDENTITY_FUNCTION = new 看电影去<Object>() {
 		public Object apply(Object arg) {

@@ -1,7 +1,7 @@
 package javalanguage.generic;
 
-public class San extends Cns {
-	public San(){
+public class InterfaceAImplExt extends InterfaceAImpl {
+	public InterfaceAImplExt(){
 		System.out.println("not print");		
 	}
 	static{
