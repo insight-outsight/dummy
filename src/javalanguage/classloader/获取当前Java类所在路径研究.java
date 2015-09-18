@@ -7,6 +7,7 @@ public class 获取当前Java类所在路径研究 {
 
 		System.out.println(获取当前Java类所在路径研究.class.getResource(""));
 		System.out.println(获取当前Java类所在路径研究.class.getResource("/"));	
+		System.out.println(获取当前Java类所在路径研究.class.getResource("/javalanguage/classloader/获取当前Java类所在路径研究.class"));	
 		System.out.println(Thread.currentThread().getContextClassLoader().getResource(""));
 		System.out.println(Thread.currentThread().getContextClassLoader().getResource("javalanguage/classloader/获取当前Java类所在路径研究.class"));
 		System.out.println(获取当前Java类所在路径研究.class.getClassLoader().getResource(""));
