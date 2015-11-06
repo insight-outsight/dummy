@@ -98,6 +98,11 @@ public class 位运算 {
 		System.out.println("---------整形左移后可能变成零负数，因为溢出了，采用长型可在一定范围内解决问题------------->");
 		System.out.println(2<<31);//0
 		System.out.println(2l<<31);//4294967296
+		System.out.println("---------无符号右移也可能会改变数字的正负------------->");
+		System.out.println(-103685>>>3);
+		System.out.println(36>>>2);
+		System.out.println(-3453>>>2);
+
 		
 	}
 
