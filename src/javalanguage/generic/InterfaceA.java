@@ -1,6 +1,6 @@
 package javalanguage.generic;
 
-public interface Lgj {
+public interface InterfaceA {
 
 	public static final String name = "语言接口";
 	

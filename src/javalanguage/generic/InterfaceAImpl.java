@@ -1,11 +1,10 @@
 package javalanguage.generic;
 
-public class Cns implements Lgj {
+public class InterfaceAImpl implements InterfaceA {
 
 	@Override
 	public String getGenericType() {
-		// TODO Auto-generated method stub
-		if(new Cns() instanceof Lgj){
+		if(new InterfaceAImpl() instanceof InterfaceA){
 			return "cut";
 		}
 		return "洽泥斯";

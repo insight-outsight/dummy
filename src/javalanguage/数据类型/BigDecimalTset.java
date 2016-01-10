@@ -36,6 +36,12 @@ public class BigDecimalTset {
 		System.out.println("binggo-"+
 				new BigDecimal(r3*r4).setScale(2, BigDecimal.ROUND_HALF_UP).floatValue());
 
+		Double d = 50.93;
+		BigDecimal originalValue = BigDecimal.valueOf(d);
+		BigDecimal subtractedValue = BigDecimal.valueOf(3.811);
+		System.out.println(originalValue.subtract(subtractedValue).doubleValue());
+
+		 
 	}
 
 }
