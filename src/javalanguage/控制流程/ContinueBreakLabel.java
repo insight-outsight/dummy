@@ -7,10 +7,10 @@ public class ContinueBreakLabel {
         bq:
         for (int i=0;i<3;i++) {
             for (int j=0;j<4;j++) {
-                if (i==1)
-                    break bq;
-/*                if (j==2)
-                    continue bq;*/
+/*                if (i==1)
+                    break bq;*/
+                if (j==2)
+                    continue bq;
                 System.out.println(i+","+j);
             }
             
