@@ -9,8 +9,9 @@ public class Reader extends Thread {
 
 	public void run() {
 		synchronized (buffer) {
-			for (int i = 0; i < 5; i++) {
-				if ("".equals(this.buffer.toString().trim())) {
+			for (int i = 0; i < 100; i++) {
+//				if (!"".equals(this.buffer.toString())) {
+				while("".equals(this.buffer.toString().trim())) {
 					try {
 						System.out.println(i+getName() + "读等待开始········"
 								+ System.currentTimeMillis());
@@ -22,12 +23,22 @@ public class Reader extends Thread {
 					}
 				}
 				System.out.println(getName() + "读开始......"+ System.currentTimeMillis());
+				//如果上面不使用while而使用if判断，则由于线程可能发生虚假唤醒（spurious wakeup），导致这里可能会抛出异常
+				if ("".equals(this.buffer.toString())){
+					throw new IllegalStateException(getName()+" wrong read");
+				}
 				System.out.println("从缓冲区读到内容is："+this.buffer.toString());
 				buffer.delete(0, buffer.toString().length());
-				//buffer.notifyAll();
-				buffer.notify();
+				/*
+				 使用notify()可能会造成死锁，这发生在比如有1个写线程和2个读线程，当
+				写线程和其中1个读线程都处于wait()状态，而另一个读线程notify()了处
+				于wait()的那个读线程，此时，由于while()条件不满足，导致1读和2个写线程都处于wait()状态
+				程序陷入无限等待中。
+				*/
+//				buffer.notify();
+				buffer.notifyAll();
 				try {
-					Thread.sleep(2000);
+					Thread.sleep(200);
 				} 
 				catch (InterruptedException e) {
 				}
