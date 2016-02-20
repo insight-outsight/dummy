@@ -20,7 +20,7 @@ public class ExecutorsDemo {
 				@Override
 				public void run() {
 					int currentRunnerNum = ai.getAndIncrement();
-					for(int j=0;j<Integer.MAX_VALUE;j++){
+					for(int j=0;j<2;j++){
 				        System.out.println(j+"."+Thread.currentThread().getName()+"****" +currentRunnerNum+ "***正在执行。。。"); 
 						try {
 							TimeUnit.MILLISECONDS.sleep(2000);
@@ -34,11 +34,23 @@ public class ExecutorsDemo {
             });  
 
         }
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+        	public void run() {  
+                try {  
+                    Thread.sleep(2000);  
+                } catch (InterruptedException e) {  
+                    e.printStackTrace();  
+                }  
+                System.out.println("thread two doing something.");  
+            }
+        });
         System.out.println(Thread.currentThread().getName() + "主程序退出。。。");  
+        System.exit(0);
+        System.out.println("fffffffffff");  
 
         // 关闭线程池  
-        pool.shutdown(); 
-        pool.awaitTermination(2000, TimeUnit.MILLISECONDS);
+//        pool.shutdown(); 
+//        pool.awaitTermination(2000, TimeUnit.MILLISECONDS);
 
 	}
 

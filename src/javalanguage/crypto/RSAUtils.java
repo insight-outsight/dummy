@@ -30,14 +30,24 @@ import javax.crypto.Cipher;
  * 字符串格式的密钥在未在特殊说明情况下都为BASE64编码格式<br/>
  * 由于非对称加密速度极其缓慢，一般文件不使用它来加密而是使用对称加密，<br/>
  * 非对称加密算法可以用来对对称加密的密钥加密，这样保证密钥的安全也就保证了数据的安全
- * 
+ *
  * 注意：
- * RSA加密明文最大长度是有限制的，最大117字节,见{@link #genKeyPair()}，解密要求密文最大长度为128字节，所以在加密和解密的过程中需要分块进行。
- *  如果加密数据过大会抛出如下异常：
+ * 1.不管明文长度是多少，RSA 生成的密文长度总是固定的。
+ * 2.RSA加密明文最大长度是有限制的，明文长度不能超过密钥长度。比如 Java 默认的 RSA 加密实现不允许明文长度超过密钥长度减去 11(单位是字节，也就是 byte),即最大117字节,
+ * 见{@link #genKeyPair()}，解密要求密文最大长度为128字节，如果加密数据过大会抛出如下异常：。
+ * 
 	Exception in thread "main" javax.crypto.IllegalBlockSizeException: Data must not be longer than 117 bytes  
     at com.sun.crypto.provider.RSACipher.a(DashoA13*..)  
     at com.sun.crypto.provider.RSACipher.engineDoFinal(DashoA13*..)  
     at javax.crypto.Cipher.doFinal(DashoA13*..) 
+ * 也就是说，
+ * 如果我们定义的密钥(我们可以通过 java.security.KeyPairGenerator.initialize(int keysize) 来定义密钥长度)长度为 1024(单位是位，也就是 bit)，生成的密钥长度就是 1024位 /8位/字节 = 128字节，
+ * 那么我们需要加密的明文长度不能超过 128字节 -11 字节 = 117字节。也就是说，我们最大能将 117 字节长度的明文进行加密，否则会出问题(抛诸如 javax.crypto.IllegalBlockSizeException: Data must not be longer than 53 bytes 的异常)。
+    ，所以在加密和解密的过程中需要分块进行。
+    
+     待加密的字节数不能超过密钥的长度值除以 8 再减去 11（即：RSACryptoServiceProvider.KeySize / 8 - 11），而加密后得到密文的字节数，正好是密钥的长度值除以 8（即：RSACryptoServiceProvider.KeySize / 8）。
+     所以，如果要加密较长的数据，则可以采用分段加解密的方式
+
  * </p>
  * 
  * @author IceWee

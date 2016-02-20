@@ -13,9 +13,10 @@ public class TsetShutdownHookAndFileCanonicalPath {
 		}
 		//程序运行结束前执行,包括：
 		//1.程序最后一个非守护线程结束
-		//2.使用kill 命令（不带-9）
-		//3.程序前台运行时，Ctrl+C退出
-		//4.操作系统用户注销或者关闭
+		//2.某个线程调用System.exit(0);
+		//3.使用kill 命令（不带-9）
+		//4.程序前台运行时，Ctrl+C退出
+		//5.操作系统用户注销或者关闭
 		Runtime.getRuntime().addShutdownHook( new Thread() {
 			   public void run() {
 				    System.out.println("shutdownThread...ed.");
@@ -31,23 +32,37 @@ public class TsetShutdownHookAndFileCanonicalPath {
 		System.out.println(f.exists());
 		System.out.println("probe");
 		
-		//Thread.currentThread().join();让线程等待以便可以测试Ctrl+C退出
+//		Thread.currentThread().join();//让线程等待以便可以测试Ctrl+C退出
+//		Thread t2 = new Thread() {
+//			   public void run() {
+//				   for(int i=0;i<4;i++){
+//					try {
+//						System.out.println("Daemon lost of beennnn..."+System.currentTimeMillis());
+//						sleep(2000);
+//					} catch (InterruptedException e) {
+//						e.printStackTrace();
+//					}
+//				   }
+//				   System.exit(0);
+//			   }
+//		};
+//		t2.start();
 		
-/*		//或者
+		//或者
 		Thread t = new Thread() {
 			   public void run() {
-				   for(int i=0;i<Integer.MAX_VALUE;i++)
-					try {
-						System.out.println("Daemon lost of bee..."+System.currentTimeMillis());
-						sleep(2000);
-					} catch (InterruptedException e) {
-						e.printStackTrace();
-					}
-				    
+				   for(int i=0;i<Integer.MAX_VALUE;i++){
+						try {
+							System.out.println("Daemon lost of bee..."+System.currentTimeMillis());
+							sleep(2000);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+				   }
 			   }
 		};
 //		t.setDaemon(true);这句是关键，设置后程序会自动结束
-		t.start();*/
+		t.start();
 		
 	}
 
