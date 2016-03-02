@@ -22,11 +22,11 @@ public class 序列化单例类的思考 {
         /*以下序列化/反序列化一个JavaBean对象*/
         System.out.println("--------------------------------");
 
-        Singleton s = Singleton.getInstance();
+        SingletonLazy s = SingletonLazy.getInstance();
         FileSerializableHelper.object2File(s, fileName);
         System.out.println("成功序列化对象到文件"+fileName);
 
-        Singleton sb = (Singleton) FileSerializableHelper.file2Object(fileName);
+        SingletonLazy sb = (SingletonLazy) FileSerializableHelper.file2Object(fileName);
         System.out.println("成功从文件"+fileName+"反序列化对象");
 
         System.out.println("--------------------------------");

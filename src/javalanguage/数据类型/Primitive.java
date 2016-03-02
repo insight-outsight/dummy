@@ -91,6 +91,8 @@ public class Primitive {
 		System.out.println(dc);
 		
 		System.out.println("============================================");
+		byte byte1111 = -128;
+		System.out.println("byte1111="+byte1111);
 		int qh = 0x11ff;
 		byte sll = (byte)qh;
 		//1111 1111  0xff
@@ -122,6 +124,7 @@ public class Primitive {
 		
 		char b2 = 'A';
 		int wb2 = b2;
+		//short wb444 = b2;//Type mismatch: cannot convert from char to short
 		System.out.println(wb2); //65
 		
 		char b3 = '雪';

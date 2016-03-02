@@ -6,7 +6,7 @@ public class 位运算 {
 		
 		//0101
 		//1011
-		System.out.println("5^11="+(5^11));
+		System.out.println("5^11="+(5^11));//异或操作符
 		System.out.println("5|11="+(5|11));
 		System.out.println("5&11="+(5&11));
 		System.out.println("-----------------------------------");
