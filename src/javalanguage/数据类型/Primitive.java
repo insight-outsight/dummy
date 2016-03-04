@@ -123,14 +123,18 @@ public class Primitive {
 		char b44 = c33;*/
 		
 		char b2 = 'A';
+		char canUsingNumber = 23528;
+		System.out.println("canUsingNumber="+canUsingNumber);
 		int wb2 = b2;
-		//short wb444 = b2;//Type mismatch: cannot convert from char to short
+//		short wb444 = b2;//Type mismatch: cannot convert from char to short
+		short wb444444 = 't';
+		short poiperyeyery = 27445;
 		System.out.println(wb2); //65
+//		char ssss = wb444444;//Type mismatch: cannot convert from short to char
 		
 		char b3 = '雪';
 		int wb3 = b3;
 		System.out.println(wb3); //38634
-		
 
 	}
 	
