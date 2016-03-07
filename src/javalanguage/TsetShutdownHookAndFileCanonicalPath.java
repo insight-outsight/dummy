@@ -13,7 +13,7 @@ public class TsetShutdownHookAndFileCanonicalPath {
 		}
 		//程序运行结束前执行,包括：
 		//1.程序最后一个非守护线程结束
-		//2.某个线程调用System.exit(0);
+		//2.某个线程调用System.exit();
 		//3.使用kill 命令（不带-9）
 		//4.程序前台运行时，Ctrl+C退出
 		//5.操作系统用户注销或者关闭
