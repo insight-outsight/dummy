@@ -10,6 +10,8 @@ public class SingletonLazy implements Serializable {
 	 */
 	private static final long serialVersionUID = -2197340396438282721L;
 	
+	private static SingletonLazy instance = null;
+	
 	private SingletonLazy(){
 		System.out.println(this.getClass().getSimpleName()+"创建开始时间"+System.currentTimeMillis());
 		try {
@@ -20,8 +22,11 @@ public class SingletonLazy implements Serializable {
 		System.out.println(this.getClass().getSimpleName()+"创建结束时间"+System.currentTimeMillis());
 	}
 	
-	public static SingletonLazy getInstance(){
-		return Holder.get();
+	public synchronized static SingletonLazy getInstance(){
+		if(instance == null){
+			instance = new SingletonLazy();
+		}
+		return instance;
 	}
 	
 	public static void warmUp(){
@@ -37,14 +42,8 @@ public class SingletonLazy implements Serializable {
 	private Object readResolve() throws ObjectStreamException {
 		  // instead of the object we're on, 
 		  // return the class variable INSTANCE
-		  return Holder.get(); 
+		  return instance; 
 	}
 	
-	private static class Holder{
-		private static SingletonLazy instance = new SingletonLazy();
-		public static SingletonLazy get(){
-			return instance;
-		}
-	}
 	
 }
