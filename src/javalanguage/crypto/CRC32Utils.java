@@ -27,6 +27,10 @@ public class CRC32Utils{
 		System.out.println(CRC32Utils.crc32("abcddfgtyrtetrtreteretew4535zzzzzzzzzzzzzz"
 				+ "zzzzzzzzzzzer5wERTWT345345345345345I&(*W#RWR%qertet66666645wr$R%#WQ"
 				+ "#$%45634#%9i9d0dr8te9r8t6e49560349543945345354345345"));
+		
+		System.out.println(Integer.toBinaryString(-1));
+		System.out.println(-1 & 0xffffffffl);
+
 
 	}
 
