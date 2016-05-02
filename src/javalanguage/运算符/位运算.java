@@ -102,7 +102,8 @@ public class 位运算 {
 		System.out.println(-103685>>>3);
 		System.out.println(36>>>2);
 		System.out.println(-3453>>>2);
-
+		System.out.println("***************把-1变成Integer.MAX_VALUE****************");
+		System.out.println(Integer.MAX_VALUE+"   变化了      "+(-1>>>1));
 		
 	}
 

@@ -1,5 +1,6 @@
 package javalanguage.crypto;
 
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 
 /**
@@ -30,23 +31,39 @@ import java.security.SecureRandom;
  */
 public class SecureRandomUtils {
 
+	private static SecureRandom secureRandom = null;
+	
+	static {
+		try {
+			secureRandom = SecureRandom.getInstance("SHA1PRNG");
+//			如果seed相同,secureRandom.nextInt()和secureRandom.nextLong()产生结果会相同。
+			secureRandom.setSeed(System.currentTimeMillis()+1234567890);
+		} catch (NoSuchAlgorithmException e) {
+			//TODO 使用log系统处理
+			e.printStackTrace();
+			System.out.println("初始化SecureRandom.getInstance(\"SHA1PRNG\")抛出异常。JVM中止退出。");
+			System.exit(-11);
+		}
+	}
+	
 	public static void main(String[] args) {
-		System.out.println(Integer.MAX_VALUE);
-		System.out.println(Integer.toBinaryString(Integer.MAX_VALUE));
-		System.out.println("uu"+(-1>>>1));
 
-		for (int i = 0; i < 100; i++){
-			System.out.println(getSecureRandomInt(false));
+		for (int i = 0; i < 20; i++){
+//			System.out.println(getSecureRandomPositiveInt());
+			System.out.println(getSecureRandomLong(true));
 		}
 
 	}
-
-	public static int getSecureRandomInt(boolean onlyReturnPositive) {
-		SecureRandom secureRandom = new SecureRandom();
-		secureRandom.setSeed(System.currentTimeMillis() + 1234567);
-		int result = secureRandom.nextInt();
-		if(result<0 && onlyReturnPositive){
-			result>>>=1;
+	
+	
+	public static int getSecureRandomPositiveInt(){
+	    return secureRandom.nextInt(Integer.MAX_VALUE);
+	}
+	
+	public static long getSecureRandomLong(boolean onlyReturnPositive){
+		long result = secureRandom.nextLong();
+		if(onlyReturnPositive && result<0){
+			result&=Long.MAX_VALUE;
 		}
 		return result;
 	}

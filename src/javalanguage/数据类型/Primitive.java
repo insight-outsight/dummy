@@ -59,6 +59,13 @@ public class Primitive {
 		
 		System.out.println(i9 == i0);//true
 
+		System.out.println("---------------------------------------------");
+		
+		System.out.println(Integer.MAX_VALUE);
+		System.out.println(Integer.toBinaryString(Integer.MAX_VALUE));
+		System.out.println(Integer.toBinaryString(Integer.MIN_VALUE));
+		System.out.println(Integer.toBinaryString(-1));
+		
 		System.out.println("#########################################");
 		
 		//0111 1111 1111 1111 1111 1111 1111 1111
