@@ -14,6 +14,15 @@ public class 获取当前Java类所在路径研究 {
 		System.out.println(获取当前Java类所在路径研究.class.getClassLoader().getResource(""));
 		System.out.println(获取当前Java类所在路径研究.class.getClassLoader().getResource("javalanguage/classloader/获取当前Java类所在路径研究.class"));
 		System.out.println(ClassLoader.getSystemResource(""));
+		
+		//Java如何获取当前class所在jar包的路径?
+		//因为程序已经被打包成jar包，所以getPath()和getFile()在这里的返回值是一样的。都是/xxx/xxx.jar这种形式。
+		//如果路径包含Unicode字符，还需要将路径转码 path = java.net.URLDecoder.decode(path, "UTF-8");
+		String path = 获取当前Java类所在路径研究.class.getProtectionDomain().getCodeSource().getLocation().getPath();
+		System.out.println("path="+path);
+		String file = 获取当前Java类所在路径研究.class.getProtectionDomain().getCodeSource().getLocation().getFile();
+		System.out.println("file="+file);
+		
 
 	}
 
