@@ -24,7 +24,7 @@ public class GetClass方法研究 {
 		System.out.println("double.class="+double.class);
 		System.out.println("double.class.getName()="+double.class.getName());
 		
-		
+
 		//Object Type
 		System.out.println(Ambiguous.class);
 		System.out.println(GetClass方法研究.class);
