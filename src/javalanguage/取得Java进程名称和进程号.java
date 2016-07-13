@@ -10,7 +10,7 @@ public class 取得Java进程名称和进程号 {
 		System.out.println("进程名称："+取得Java进程名称和进程号.class.getSimpleName());
         int pid = getPid();
         System.out.println("进程pid: " + pid);
-        System.in.read(); // block the program so that we can do some probing on it
+//        System.in.read(); // block the program so that we can do some probing on it
 
 	}
 	

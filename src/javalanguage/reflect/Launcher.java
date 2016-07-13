@@ -3,21 +3,22 @@ package javalanguage.reflect;
 import java.lang.reflect.Proxy;
 
 
-public class Launch {
+public class Launcher {
 
     public static void main(String[] args) {
+    	
         System.out.println("i am super!");
         
-        IBelle b = new ColdBelle();
+        IBelle b = new BelleAndBeast();
 
-        IBelle bProxy = (IBelle) SimpleDynamicProxyFactory.getBean(b);
-        bProxy.eat("strawberry and pineapple");
+        IBelle bProxy = (IBelle) JDKReflectDynamicProxyFactory.newProxyInstance(b, new LogInvocationHandler(b));
+        bProxy.show("strawberry and pineapple");
         
-        IFucker b2 = new ColdBelle();
+        IBeast b2 = new BelleAndBeast();
         //下面b2换成b效果一样
-        IFucker bProxy2 = (IFucker) SimpleDynamicProxyFactory.getBean(b2);
-        //IFucker bProxy2 = (IFucker) SimpleDynamicProxyFactory.getBean(b);
-        bProxy2.kfc(234, "mf");
+        IBeast bProxy2 = (IBeast)  JDKReflectDynamicProxyFactory.newProxyInstance(b2, new LogInvocationHandler(b2));
+        //IBeast bProxy2 = (IBeast)  JDKReflectDynamicProxyFactory.newProxyInstance(b2, new LogInvocationHandler(b2));
+        System.out.println(bProxy2.eat(234, "mf"));
         
         //b==b2为假
         System.out.println(b == b2);
@@ -25,8 +26,9 @@ public class Launch {
         System.out.println(bProxy==bProxy2);
         //c1==c2为真
         Class<?> c1 = Proxy.getProxyClass(Thread.currentThread().getContextClassLoader(), b.getClass().getInterfaces());      
-        Class<?> c2 = Proxy.getProxyClass(Thread.currentThread().getContextClassLoader(), b.getClass().getInterfaces());             
+        Class<?> c2 = Proxy.getProxyClass(Thread.currentThread().getContextClassLoader(), b2.getClass().getInterfaces());             
         System.out.println(c1 == c2);
+        
         //ds2(3,new Integer[]{6,788,99});
 
 /*      String s = String.valueOf(Character.toChars(0x2F81A));
@@ -52,7 +54,7 @@ public class Launch {
     public static void ds(int r) throws Throwable{
         if(r < 5){
             System.out.println("abe");
-            throw new Throwable("hahaa");
+            throw new Throwable("hahaawoo");
         }
     }
     

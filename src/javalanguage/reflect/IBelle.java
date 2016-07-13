@@ -8,5 +8,5 @@ package javalanguage.reflect;
  * @author root
  */
 public interface IBelle {
-    public abstract void eat(String something);
+    public abstract void show(String something);
 }
