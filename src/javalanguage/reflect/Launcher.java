@@ -1,5 +1,7 @@
 package javalanguage.reflect;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 
 
@@ -49,6 +51,33 @@ public class Launcher {
             Logger.getLogger(JavaApplication1.class.getName()).log(Level.SEVERE, null, ex);
         }
  */
+        
+        /*        Foo foo = new Foo("这个一个Foo对象！"); 
+        Class clazz = foo.getClass(); */
+        System.out.println("=================以下演示对proxy代理后的对象再通过reflect进行method.invoke()调用======================================");
+
+    	Class<?> clazz = bProxy.getClass();
+
+        try {
+        	Method[] ms = clazz.getDeclaredMethods();
+        	for(Method m:ms){
+        		System.out.println("methodName:"+m.getName()+",params Count:"+m.getParameterCount());
+        	}
+			Method showMethod = clazz.getDeclaredMethod("show",String.class); 
+			showMethod.invoke(bProxy,"hahaha");
+		} catch (NoSuchMethodException e) {
+			e.printStackTrace();
+		} catch (SecurityException e) {
+			e.printStackTrace();
+		} catch (IllegalAccessException e) {
+			e.printStackTrace();
+		} catch (IllegalArgumentException e) {
+			e.printStackTrace();
+		} catch (InvocationTargetException e) {
+			e.printStackTrace();
+		} 
+
+        
     }
     
     public static void ds(int r) throws Throwable{

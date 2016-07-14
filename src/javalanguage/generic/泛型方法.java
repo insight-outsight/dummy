@@ -13,17 +13,11 @@ public class 泛型方法 {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-/*		Me722 mb = new Me722();
-		System.out.println( mb.returnCh().getGenericType() );
-		List<String> li = mb.listObjects();
-		for(String wet :li){
-			System.out.println( wet);	
-		}*/
-		
-		Map m = new 泛型方法().sm();
+
+		String m = new 泛型方法().sm("Hello",String.class);
 		System.out.println(m);
 		
-		String s = new 泛型方法().sm();
+		Integer s = new 泛型方法().sm(777,Integer.class);
 		System.out.println(s);
 		
 		List l = new 泛型方法().getExtensions(String.class);
@@ -46,9 +40,9 @@ public class 泛型方法 {
 	}
 	
 	/**以下三个为泛型方法，注意写法.Plus:更经典的泛型方法见java.util.Arrays.copyOf()方法**/
-	public <T extends Object> T sm() {
-		final int et = 5;
-		return null;
+	public <T extends Object> T sm(Object o,Class<?> returnType) {
+		
+		return (T) returnType.cast(o);
 	}
 	public <R> R sm(R[] atg) {
 		final int et = 5;

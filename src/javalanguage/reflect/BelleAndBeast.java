@@ -19,8 +19,15 @@ public class BelleAndBeast implements IBelle, IBeast {
 	@Override
 	public void show(String something) {
 		// throw new UnsupportedOperationException("Not supported yet.");
-		System.out.println("fucking damned...");
+		System.out.println(String.format("fucking damned...[%s]",something));
 
+	}
+
+	@Override
+	public void show(String something, String anything) {
+		System.out.println(String.format("fucking damned222...[%s]",anything));
+
+		
 	}
 
 }

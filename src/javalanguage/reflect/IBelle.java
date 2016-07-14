@@ -9,4 +9,5 @@ package javalanguage.reflect;
  */
 public interface IBelle {
     public abstract void show(String something);
+    public abstract void show(String something,String anything);
 }
