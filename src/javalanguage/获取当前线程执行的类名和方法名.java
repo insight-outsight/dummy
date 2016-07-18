@@ -35,30 +35,22 @@ It's exactly the same principle, just you dig out the name of the method instead
  * @author zcx
  *
  */
-public class 获取当前类类名和方法名 {
+public class 获取当前线程执行的类名和方法名 {
 	public static void main(String[] args) {
 
-		获取当前类类名和方法名 methodName = new 获取当前类类名和方法名();
-
+		获取当前线程执行的类名和方法名 methodNameGetter = new 获取当前线程执行的类名和方法名();
 		String clazz = Thread.currentThread().getStackTrace()[1].getClassName();
-
-		String method = Thread.currentThread().getStackTrace()[1]
-				.getMethodName();
-
-		System.out.println("Class Name: " + clazz + "\r\n Method Name: "
-				+ method);
-
-		methodName.anotherMethod();
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+		System.out.println("Class Name: " + clazz + "，Method Name: "+ methodName);
+		methodNameGetter.anotherMethod();
+		
 	}
 
 	private void anotherMethod() {
 
 		String clazz = this.getClass().getName();
-
-		String method = Thread.currentThread().getStackTrace()[1]
-				.getMethodName();
-
-		System.out.println("Class Name: " + clazz + "\r\n Method Name: "
-				+ method);
+		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
+		System.out.println("Class Name: " + clazz + "，Method Name: "+ methodName);
+		
 	}
 }
