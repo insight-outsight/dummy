@@ -75,16 +75,16 @@ protected void searchDir(String dir, boolean recurse) {
                             String thisClassName = getClassName(entry);
                             
                             //按照文件内容搜索文件。不搜索扩展名为.class的文件
-//                            if(thisClassName.lastIndexOf(".class")==-1){
-//                             BufferedReader r = new BufferedReader(new InputStreamReader(zip.getInputStream(entry)));
-//                             while(r.read()!=-1){
-//                             String tempStr = r.readLine();
-//                             if(null!=tempStr && tempStr.indexOf(condition)>-1){
-//                             this.jarFiles.add(filename + "  --->  " + thisClassName);
-//                             break;
-//                             }
-//                             }
-//                            }
+                            if(thisClassName.lastIndexOf(".class")==-1){
+                             BufferedReader r = new BufferedReader(new InputStreamReader(zip.getInputStream(entry)));
+                             while(r.read()!=-1){
+                             String tempStr = r.readLine();
+                             if(null!=tempStr && tempStr.indexOf(condition)>-1){
+                             this.jarFiles.add(filename + "  --->  " + thisClassName);
+                             break;
+                             }
+                             }
+                            }
                             
                             //按照文件名搜索文件
                             if (thisClassName.contains(condition)) {
