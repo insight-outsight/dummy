@@ -24,7 +24,7 @@ public class Map按Value排序 {
 	        map.put("C",674);  
 	        map.put("D",3);  
 	        map.put("R",10199);  
-	        map.put("F",80);  
+	        map.put("F",1);  
 	        
 	        System.out.println("unsorted map: "+map);  
 	  
@@ -32,6 +32,10 @@ public class Map按Value排序 {
 	        System.out.println("results: "+MapUtils.sortIntegerValue(map,true));
 	        System.out.println("results: "+MapUtils.sortIntegerValue(map,false));
 	        
+	        Map<String,Integer> linkedHashMap = MapUtils.sortByValue(map);
+	        if(linkedHashMap.entrySet().iterator().hasNext()){
+	        	System.out.println(linkedHashMap.entrySet().iterator().next().getKey());
+	        }
 	        System.out.println("anohter method results: "+MapUtils.sortByValue(map));
 
 
