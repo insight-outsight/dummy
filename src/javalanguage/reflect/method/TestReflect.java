@@ -13,7 +13,7 @@ import java.lang.reflect.InvocationTargetException;
 * 
 * 这里代码有改动
 */ 
-public class TestRef { 
+public class TestReflect { 
 
     public static void main(String args[]) throws NoSuchMethodException, IllegalAccessException, InvocationTargetException, Exception { 
 /*        Foo foo = new Foo("这个一个Foo对象！"); 
@@ -50,6 +50,6 @@ class Foo {
     } 
 
     public void outInfo() { 
-        System.out.println("这是测试Java反射的测试类"); 
+        System.out.println("这是测试Java反射的测试类--msg="+msg); 
     } 
 }

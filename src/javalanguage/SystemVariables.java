@@ -32,8 +32,21 @@ public class SystemVariables {
 		 *  (2)显示CLASSPATH环境变量设置的路径.如果设置了CLASSPATH,则CLASSPATH的值会覆盖缺省值，记得设置时要包含当前路径(.)。
 		 *  (3)显示执行Java的命令行-classpath或-cp的值,如果指定了这两个命令行参数之一,它的值会覆盖环境变量CLASSPATH的值。
 		 *
-		 * 2.在Eclipse中运行javalanguage.SystemVariable则显示类javalanguage.SystemVariable所在Eclipse工作空间目录，
-		 *   如:F:\ews\LearningJDK\bin
+		 *例如：
+		 * （1）.在Eclipse的普通JAVA工程中运行javalanguage.SystemVariable则显示类javalanguage.SystemVariable所在Eclipse工作空间目录，
+		 *   如:F:\ews\LearningJDK\bin 
+		 *   
+		 * （2）.在Eclipse的maven工程的src/main/java中运行，得到/Users/eclipseworkspace/a-service/a-service-impl/target/classes:
+		 * /Users/eclipseworkspace/a-service/a-service-api/target/classes:/Users/Downloads/Eclipse.app/Contents/
+		 * MacOS/~/.m2/repository/commons-configuration/commons-configuration/1.10/commons-configuration-1.10.jar:
+		 * /Users/Downloads/Eclipse.app/Contents/MacOS/~/.m2/repository/redis/clients/jedis/2.1.0/jedis-2.1.0.jar
+		 * 其中，a-service-impl依赖了a-service-api，而在maven build时选择了Resolve Workspace artifacts， 工程的 Maven Dependencies下出现a-service-api工程，而不是jar，所以会去当前eclipse workspace工程空间寻找类路径/Users/eclipseworkspace/a-service/a-service-api/target/classes
+		 * 
+		 * （3）在maven工程的src/test/java中运行，得到/Users/eclipseworkspace/a-service/a-service-impl/target/test-classes:
+		 * /Users/eclipseworkspace/a-service/a-service-impl/target/classes:/Users/eclipseworkspace/a-service/a-service
+		 * -api/target/classes:/Users/Downloads/Eclipse.app/Contents/MacOS/~/.m2/repository/redis/clients/jedis/2.1.0/
+		 * jedis-2.1.0.jar
+		 * 注意比在src/main/java运行结果多了/Users/eclipseworkspace/a-service/a-service-impl/target/test-classes。
 		 */
 		System.out.println(System.getProperty("java.class.path"));
 		System.out.println(System.getProperty("file.encoding"));

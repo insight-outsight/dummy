@@ -64,9 +64,12 @@ public class Primitive {
 		System.out.println(Integer.MAX_VALUE);
 		System.out.println(Integer.toBinaryString(Integer.MAX_VALUE));
 		System.out.println(Integer.toBinaryString(Integer.MIN_VALUE));
+		System.out.println(Integer.toBinaryString(Integer.MAX_VALUE+1));
 		System.out.println(Integer.toBinaryString(-1));
+		System.out.println(Integer.toBinaryString(Integer.MIN_VALUE-1));
+		System.out.println(Integer.toBinaryString(Integer.MIN_VALUE+1));
 		
-		System.out.println("#########################################");
+		System.out.println("##############################################");
 		
 		//0111 1111 1111 1111 1111 1111 1111 1111
 		System.out.println(0x7fffffff);//最大正数2147483647
