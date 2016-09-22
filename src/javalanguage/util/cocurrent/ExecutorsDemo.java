@@ -20,13 +20,16 @@ public class ExecutorsDemo {
 				@Override
 				public void run() {
 					int currentRunnerNum = ai.getAndIncrement();
-					for(int j=0;j<2;j++){
+					for(int j=0;j<Integer.MAX_VALUE;j++){
 				        System.out.println(j+"."+Thread.currentThread().getName()+"****" +currentRunnerNum+ "***正在执行。。。"); 
 						try {
 							TimeUnit.MILLISECONDS.sleep(2000);
 						} 
 						catch (InterruptedException e) {
+							System.out.println("我被中断，但我响应，继续运行。");
 							e.printStackTrace();
+//							System.out.println("我被中断，我响应，结束运行。");
+//							break; 
 						}
 					}
 				}
@@ -34,18 +37,19 @@ public class ExecutorsDemo {
             });  
 
         }
-        Runtime.getRuntime().addShutdownHook(new Thread(){
-        	public void run() {  
-                try {  
-                    Thread.sleep(2000);  
-                } catch (InterruptedException e) {  
-                    e.printStackTrace();  
-                }  
-                System.out.println("thread two doing something.");  
-            }
-        });
-        System.out.println(Thread.currentThread().getName() + "主程序退出。。。");  
-        System.exit(0);
+        pool.shutdownNow();
+//        Runtime.getRuntime().addShutdownHook(new Thread(){
+//        	public void run() {  
+//                try {  
+//                    Thread.sleep(2000);  
+//                } catch (InterruptedException e) {  
+//                    e.printStackTrace();  
+//                }  
+//                System.out.println("shutdown hook thread end.");  
+//            }
+//        });
+//        System.out.println(Thread.currentThread().getName() + "主程序退出。。。");  
+//        System.exit(0);
         System.out.println("fffffffffff");  
 
         // 关闭线程池  
