@@ -24,9 +24,10 @@ public class ExecutorsDemo {
 				        System.out.println(j+"."+Thread.currentThread().getName()+"****" +currentRunnerNum+ "***正在执行。。。"); 
 						try {
 							TimeUnit.MILLISECONDS.sleep(2000);
+							if(j==4)return;
 						} 
 						catch (InterruptedException e) {
-							System.out.println("我被中断，但我响应，继续运行。");
+							System.out.println("我被中断，但我不响应，继续运行。");
 							e.printStackTrace();
 //							System.out.println("我被中断，我响应，结束运行。");
 //							break; 
@@ -37,7 +38,9 @@ public class ExecutorsDemo {
             });  
 
         }
-        pool.shutdownNow();
+        pool.shutdown();
+        pool.awaitTermination(2000, TimeUnit.MILLISECONDS);
+//        pool.shutdownNow();
 //        Runtime.getRuntime().addShutdownHook(new Thread(){
 //        	public void run() {  
 //                try {  
