@@ -11,7 +11,7 @@ public class RegExpTset {
 		java.util.regex.Matcher m = p.matcher(myText);
 
 		if (m.find()) {
-			String matchedText = m.group();
+			String matchedText = m.group();//等价于group(0)，即匹配到的完整字符串内容 
 			int matchedFrom = m.start();
 			int matchedTo = m.end();
 			System.out.println("matched [" + matchedText + "] " + "from "

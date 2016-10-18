@@ -16,7 +16,8 @@ public class 取得Java进程名称和进程号 {
 	
     private static int getPid() {
         RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();    
-        String name = runtime.getName(); // format: "pid@hostname"
+        String name = runtime.getName();
+        System.out.println("runtime.getName()="+name);// result format: "pid@hostname"
         try {
             return Integer.parseInt(name.substring(0, name.indexOf('@')));
         } catch (Exception e) {
