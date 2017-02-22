@@ -37,7 +37,7 @@ public class StringTset {
 		System.out.println("=============4=============");
 
 		
-		String content4 = ",a,"; //split后长度：2,,字段分别为:"","a"
+		String content4 = ",a,"; //split后长度：2。字段分别为:"","a"
 		String[] splittedArray4 = content4.split(_SPLITTER);
 		System.out.println("split后长度："+splittedArray4.length);
 		for(String str:splittedArray4){
@@ -45,13 +45,19 @@ public class StringTset {
 		}
 		System.out.println("=============5=============");
 
-		String content5 = "b,,"; //split后长度：1,,字段分别为:"b"
+		String content5 = "b,,"; //split后长度：1。字段分别为:"b"
 		String[] splittedArray5 = content5.split(_SPLITTER);
 		System.out.println("split后长度："+splittedArray5.length);
 		for(String str:splittedArray5){
 			System.out.println("--<"+str+">--");
 		}
-		
+		System.out.println("=============6=============");
+		String content6 = ",,,c"; //split后长度：4。字段分别为:"","","","c"
+		String[] splittedArray6 = content6.split(_SPLITTER);
+		System.out.println("split后长度："+splittedArray6.length);
+		for(String str:splittedArray6){
+			System.out.println("--<"+str+">--");
+		}
 	}
 
 }

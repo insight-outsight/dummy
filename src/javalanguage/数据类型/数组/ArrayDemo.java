@@ -81,6 +81,7 @@ public class ArrayDemo {
         System.out.println(Double.class);
         System.out.println(Object.class);
         System.out.println(int.class);
+        System.out.println(int.class.getName());
         System.out.println(long.class);
         System.out.println(double.class);
         System.out.println(int[].class);
