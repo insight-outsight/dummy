@@ -92,6 +92,12 @@ public class ArrayDemo {
         System.out.println(String[].class);
         System.out.println(String[].class.getName());
         System.out.println(String[].class.getSimpleName());
+        System.out.println(Integer[].class);
+        System.out.println(Integer[].class.getName());
+        System.out.println(Integer[].class.getSimpleName());
+        System.out.println(int[].class);
+        System.out.println(int[].class.getName());
+        System.out.println(int[].class.getSimpleName());
         
         Long[] o = new Long[2];
         o[0]=9l;
