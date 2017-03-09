@@ -1,5 +1,6 @@
 package javalanguage.generic;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -11,8 +12,13 @@ public class 泛型方法 {
 
 	/**
 	 * @param args
+	 * @throws InvocationTargetException 
+	 * @throws NoSuchMethodException 
+	 * @throws InstantiationException 
+	 * @throws IllegalAccessException 
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args) 
+			throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
 
 		String m = new 泛型方法().sm("Hello",String.class);
 		System.out.println(m);
@@ -37,6 +43,11 @@ public class 泛型方法 {
 		s3.add(3333333333334l);
 		
 		Set<String> s12 = union(s1,s2,s2);
+		
+	    Integer i = getO(Integer.class,"35");
+        System.out.println(i);
+        Long j = getO(Long.class,"4");
+        System.out.println("uu---" + j);
 	}
 	
 	/**以下三个为泛型方法，注意写法.Plus:更经典的泛型方法见java.util.Arrays.copyOf()方法**/
@@ -74,5 +85,11 @@ public class 泛型方法 {
 		}
 		return result;
 	}
+	
+    public static  <T> T getO(Class<T> c,String arg) 
+    		throws IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
+        T t = c.getConstructor(String.class).newInstance(arg);
+        return t;
+    }
 	
 }
