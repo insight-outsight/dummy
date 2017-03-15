@@ -10,7 +10,7 @@ public class CountDownLatchDemo {
 	    CountDownLatch startSignal = new CountDownLatch(1);
 	    CountDownLatch doneSignal = new CountDownLatch(taskNum);
 
-	    for (int i = 0; i < 5; ++i) {// create and start threads
+	    for (int i = 0; i < taskNum; ++i) {// create and start threads
 	       new Thread(new Worker(startSignal, doneSignal)).start();
 	    }
         doSomethingElse();            // don't let run yet
