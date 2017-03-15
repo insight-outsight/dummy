@@ -1,13 +1,16 @@
 package javalanguage.util.cocurrent;
 
+import java.util.concurrent.CountDownLatch;
+
 public class Versatile {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException {
+		
 		new Thread(new Runnable(){
 
 			@Override
 			public void run() {
-				int i=30;
+				int i=5;
 				while(i-->0){				
 					System.out.println("i am detached");
 					
@@ -23,6 +26,7 @@ public class Versatile {
 			}
 			
 		}).start();
+		
 		System.out.println("goend");
 
 	}
