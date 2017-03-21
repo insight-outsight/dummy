@@ -47,8 +47,8 @@ public class MapLauncher {
 			System.out.println("LinkedHashMap值："+value + "	LinkedHashMap类型："+value.getClass().getName());
 		}
 		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		String[] dates = { "10/31/01", "01/01/01", "03/05/01", "02/04/01", "05/04/23" };
-		String[] items = { "Halloween", "New Years", "Birthday", "Anniversary", "造业!!!!!" };
+		String[] dates = { "a5","f7","e2","d5","e2","10/31/01", "01/01/01", "03/05/01", "02/04/01", "05/04/23" };
+		String[] items = { "yi","er","san","si","wu","Halloween", "New Years", "Birthday", "Anniversary", "造业!!!!!" };
 		
 		Map<String,String> calendarMap = new TreeMap<String,String> ();
 
@@ -56,7 +56,7 @@ public class MapLauncher {
 			calendarMap.put(dates[x], items[x]);
 		}
 		
-		System.out.println("calendarMap内容是"+ calendarMap);
+		System.out.println("calendarMap内容x是"+ calendarMap);
 		
 		Set<Map.Entry<String,String>> mappingEntrys = calendarMap.entrySet();
 		System.out.println("object \t\t\tkey\t\tvalue");

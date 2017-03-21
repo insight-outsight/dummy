@@ -42,7 +42,7 @@ public class 泛型方法 {
 		s3.add(1111222l);
 		s3.add(3333333333334l);
 		
-		Set<String> s12 = union(s1,s2,s2);
+		Set<String> s12 = union(s1,s2,s3);
 		
 	    Integer i = getO(Integer.class,"35");
         System.out.println(i);
