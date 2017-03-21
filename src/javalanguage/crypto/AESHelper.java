@@ -76,16 +76,16 @@ public class AESHelper {
 		System.out.println("解密后：" + new String(decryptResult));
 		
 		/*容易出错的地方，请看下面代码*/
-		System.out.println("***********************************************");
-		try {
-			String encryptResultStr = new String(encryptResult,"utf-8");
-			decryptResult = decrypt(encryptResultStr.getBytes("utf-8"),password);
-			System.out.println("解密后：" + new String(decryptResult));
-		} catch (UnsupportedEncodingException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+//		System.out.println("***********************************************");
+//		try {
+//			String encryptResultStr = new String(encryptResult,"utf-8");
+//			decryptResult = decrypt(encryptResultStr.getBytes("utf-8"),password);
+//			System.out.println("解密后：" + new String(decryptResult));
+//		} catch (UnsupportedEncodingException e) {
+//			e.printStackTrace();
+//		} catch (Exception e) {
+//			// TODO: handle exception
+//		}
 		/*则，系统会报出如下异常：javax.crypto.IllegalBlockSizeException: Input length must be multiple of 16 when decrypting with padded cipher
 	at com.sun.crypto.provider.SunJCE_f.b(DashoA13*..)
 	at com.sun.crypto.provider.SunJCE_f.b(DashoA13*..)

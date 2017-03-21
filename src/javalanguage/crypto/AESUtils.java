@@ -6,6 +6,12 @@ import javax.crypto.spec.SecretKeySpec;
 public class AESUtils {
 
 		
+		public static void main(String[] args) throws Exception {
+			String eS = new String(encrypt("bbb4ccc4ddd4eee4".getBytes(), "GUgemWNhGTrh6kSM"));
+			System.out.println("a--"+eS);
+			System.out.println("b--"+new String(eS.getBytes(), "GUgemWNhGTrh6kSM"));
+		}
+		
 	    public static byte[] encrypt(byte[] src, String key) throws Exception {           
 	        return encrypt(src, key.getBytes());
 	    }   
