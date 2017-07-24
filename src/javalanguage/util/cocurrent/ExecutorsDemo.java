@@ -65,6 +65,7 @@ public class ExecutorsDemo {
 
         pool.shutdown();
 //        pool.shutdownNow();
+
         pool.awaitTermination(2000, TimeUnit.MILLISECONDS);
 //        System.out.println(Thread.currentThread().getName() + "主程序退出。。。");  
 //        System.exit(0);
