@@ -21,16 +21,22 @@ public class ExecutorsDemo {
 				public void run() {
 					int currentRunnerNum = ai.getAndIncrement();
 					for(int j=0;j<Integer.MAX_VALUE;j++){
-				        System.out.println(j+"."+Thread.currentThread().getName()+"****" +currentRunnerNum+ "***正在执行。。。"); 
-						try {
-							TimeUnit.MILLISECONDS.sleep(2000);
-							if(j==4)return;
-						} 
-						catch (InterruptedException e) {
-							System.out.println("我被中断，但我不响应，继续运行。");
-							e.printStackTrace();
-//							System.out.println("我被中断，我响应，结束运行。");
-//							break; 
+						if (!Thread.interrupted()) { 
+					        System.out.println(j+"."+Thread.currentThread().getName()+"****" +currentRunnerNum+ "***正在执行。。。"); 
+							try {
+								TimeUnit.MILLISECONDS.sleep(2000);
+	//							if(j==4)return;
+							} 
+							catch (InterruptedException e) {
+//								System.out.println("我被中断，但我不响应，继续运行。");
+								e.printStackTrace();
+								System.out.println("我被中断，我响应，结束运行。");
+	//							break; 
+								Thread.currentThread().interrupt(); 
+							}
+						}
+						else{
+							break;
 						}
 					}
 				}
@@ -38,19 +44,24 @@ public class ExecutorsDemo {
             });  
 
         }
-        pool.shutdown();
+
+
+        Runtime.getRuntime().addShutdownHook(new Thread(){
+        	public void run() {  
+                try {  
+                    Thread.sleep(2000);  
+                } catch (InterruptedException e) {  
+                    e.printStackTrace();  
+                }  
+                System.out.println("shutdown hook thread end.");  
+            }
+        });
+        
+        Thread.sleep(1000);  
+
+//        pool.shutdown();
+        pool.shutdownNow();
         pool.awaitTermination(2000, TimeUnit.MILLISECONDS);
-//        pool.shutdownNow();
-//        Runtime.getRuntime().addShutdownHook(new Thread(){
-//        	public void run() {  
-//                try {  
-//                    Thread.sleep(2000);  
-//                } catch (InterruptedException e) {  
-//                    e.printStackTrace();  
-//                }  
-//                System.out.println("shutdown hook thread end.");  
-//            }
-//        });
 //        System.out.println(Thread.currentThread().getName() + "主程序退出。。。");  
 //        System.exit(0);
         System.out.println("fffffffffff");  
