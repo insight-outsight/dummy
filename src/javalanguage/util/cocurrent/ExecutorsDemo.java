@@ -13,11 +13,11 @@ public class ExecutorsDemo {
 		int poolSize = 2;
 //		ExecutorService pool = Executors.newFixedThreadPool(poolSize);  
 		ExecutorService pool = new ThreadPoolExecutor(poolSize, poolSize, 
-				0L, TimeUnit.MILLISECONDS,new LinkedBlockingQueue<Runnable>(1));
+				0L, TimeUnit.MILLISECONDS,new LinkedBlockingQueue<Runnable>(2));
 
 		final AtomicInteger ai = new AtomicInteger(0);
 		
-        for(int i=0;i<poolSize+2;i++){
+        for(int i=0;i<poolSize+4;i++){
         	
             try {
 				pool.execute(new Runnable(){
@@ -48,7 +48,7 @@ public class ExecutorsDemo {
 					
 				});
 			} catch (Exception e) {
-				System.out.println("提交任务出错");
+				System.out.println("提交任务["+i+"]出错");
 				e.printStackTrace();
 			}  
 
@@ -71,7 +71,7 @@ public class ExecutorsDemo {
         pool.shutdown();
 //        pool.shutdownNow();
 
-        pool.awaitTermination(2000, TimeUnit.MILLISECONDS);
+        pool.awaitTermination(5000, TimeUnit.MILLISECONDS);
 //        System.out.println(Thread.currentThread().getName() + "主程序退出。。。");  
 //        System.exit(0);
         System.out.println("fffffffffff"+Integer.MAX_VALUE+","+(Integer.MAX_VALUE+1)+","+((Integer.MAX_VALUE+1)==Integer.MIN_VALUE));

@@ -84,11 +84,19 @@ public class ArrayDemo {
         System.out.println(int.class.getName());
         System.out.println(long.class);
         System.out.println(double.class);
+        System.out.println("-------------------array-------------------------");
         System.out.println(int[].class);
         System.out.println(long[].class);
         System.out.println(float[].class);
         System.out.println(double[].class);
+        System.out.println(byte[].class);
+        System.out.println(char[].class);
         System.out.println(long[].class.getSimpleName());
+        System.out.println(long[].class.getName());
+        System.out.println(byte[].class.getSimpleName());
+        System.out.println(byte[].class.getName());
+        System.out.println(char[].class.getSimpleName());
+        System.out.println(char[].class.getName());
         System.out.println(String[].class);
         System.out.println(String[].class.getName());
         System.out.println(String[].class.getSimpleName());
@@ -98,7 +106,10 @@ public class ArrayDemo {
         System.out.println(int[].class);
         System.out.println(int[].class.getName());
         System.out.println(int[].class.getSimpleName());
-        
+        System.out.println(byte[].class.getSimpleName());
+        System.out.println(int[].class.getSimpleName());
+        System.out.println("--------------------------------------------");
+
         Long[] o = new Long[2];
         o[0]=9l;
         System.out.println(o[0]);
