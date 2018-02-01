@@ -33,11 +33,11 @@ public class TsetBean extends TsetBeanParent{
 	//放下面new TsetBean();之前，Laucher.main方法中调用TsetBean.p()会得到s="imString"
 //	private static String s = "imString";
 
-//	private static TsetBean INSTANCE = new TsetBean();
+	private static TsetBean INSTANCE = new TsetBean();
 	
-//	public static TsetBean getInstance(){
-//		return INSTANCE;
-//	}
+	public static TsetBean getInstance(){
+		return INSTANCE;
+	}
 	
 	//放上面new TsetBean();之后，在Laucher.main方法中调用TsetBean.p()会得到s=null
 	private static String s = "imString";

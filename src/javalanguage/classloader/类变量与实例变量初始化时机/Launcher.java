@@ -38,9 +38,9 @@ public class Launcher {
 //      但Class.forName()会初始化类
 //      Class.forName(TsetBean.class.getName());
 //		创建对象会初始化静态变量和实例变量
-		TsetBean cbean = new TsetBean();
+//		TsetBean cbean = new TsetBean();
 //		调用类静态方法只会初始化静态变量
-//		TsetBean.p();
+		TsetBean.p();
 	}
 	
 	
