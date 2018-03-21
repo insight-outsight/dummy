@@ -3,10 +3,6 @@ package javalanguage.reflect;
 import java.lang.reflect.Method;
 
 public class LogInvocationHandler extends AbstractInvocationHandler {
-
-	protected LogInvocationHandler(Object object){
-	    super(object);
-	}
 	
 	@Override
 	protected void doBefore(Object originalObject, Method m) {

@@ -13,12 +13,12 @@ public class Launcher {
         
         IBelle b = new BelleAndBeast();
 
-        IBelle bProxy = (IBelle) JDKReflectDynamicProxyFactory.newProxyInstance(b, new LogInvocationHandler(b));
+        IBelle bProxy = JDKReflectDynamicProxyFactory.newProxyInstance(b, new LogInvocationHandler());
         bProxy.show("strawberry and pineapple");
         
         IBeast b2 = new BelleAndBeast();
         //下面b2换成b效果一样
-        IBeast bProxy2 = (IBeast)  JDKReflectDynamicProxyFactory.newProxyInstance(b2, new LogInvocationHandler(b2));
+        IBeast bProxy2 = JDKReflectDynamicProxyFactory.newProxyInstance(b2, new LogInvocationHandler());
         //IBeast bProxy2 = (IBeast)  JDKReflectDynamicProxyFactory.newProxyInstance(b2, new LogInvocationHandler(b2));
         System.out.println(bProxy2.eat(234, "mf"));
         
@@ -26,9 +26,10 @@ public class Launcher {
         System.out.println(b == b2);
         //bProxy==bProxy2为假
         System.out.println(bProxy==bProxy2);
-        //c1==c2为真
+        
         Class<?> c1 = Proxy.getProxyClass(Thread.currentThread().getContextClassLoader(), b.getClass().getInterfaces());      
         Class<?> c2 = Proxy.getProxyClass(Thread.currentThread().getContextClassLoader(), b2.getClass().getInterfaces());             
+        //c1==c2为真
         System.out.println(c1 == c2);
         
         //ds2(3,new Integer[]{6,788,99});

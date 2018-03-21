@@ -7,9 +7,10 @@ import java.lang.reflect.Proxy;
 
 public abstract class JDKReflectDynamicProxyFactory {
 
-	public static Object newProxyInstance(Object originalObject,InvocationHandler ih){
-	    Class<? extends Object> clazz = originalObject.getClass();
-	    return Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), ih);
+	public static <T> T newProxyInstance(T originalObject,AbstractInvocationHandler aih){
+	    Class<?> clazz = originalObject.getClass();
+	    aih.setOriginalObject(originalObject);
+	    return (T)Proxy.newProxyInstance(clazz.getClassLoader(), clazz.getInterfaces(), aih);
 	}
 	
 

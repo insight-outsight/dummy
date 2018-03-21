@@ -15,7 +15,7 @@ public class TsetBean extends TsetBeanParent{
 	
 	
 	TsetBean(){
-		System.out.println("construct ok...");
+		System.out.println("TsetBean construct ok...");
 	}
 	
 	private CopyOfInstanceNestedBean cdnb = new CopyOfInstanceNestedBean();
