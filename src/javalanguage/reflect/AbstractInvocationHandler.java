@@ -7,15 +7,14 @@ public abstract class AbstractInvocationHandler implements InvocationHandler {
 
 	private Object originalObject;
 
-	public AbstractInvocationHandler(Object originalObject){
-	    this.originalObject = originalObject;
+	public AbstractInvocationHandler(){
 	}
 	
 	@Override
 	public Object invoke(Object proxy, Method method, Object[] args)
 			throws Throwable {
 	    Object result = null;
-	    
+	    System.out.println("----"+proxy.getClass());
 	    try{
 	        doBefore(originalObject,method);
 	    }
@@ -44,6 +43,11 @@ public abstract class AbstractInvocationHandler implements InvocationHandler {
 	    return result;
 	}
 	
+	
+	public void setOriginalObject(Object originalObject) {
+		this.originalObject = originalObject;
+	}
+
 	protected abstract void doBefore(Object originalObject,Method m) throws Throwable;
 	protected abstract void doAfter(Object originalObject,Method m) throws Throwable;
 
