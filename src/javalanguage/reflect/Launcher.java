@@ -16,6 +16,11 @@ public class Launcher {
         IBelle bProxy = JDKReflectDynamicProxyFactory.newProxyInstance(b, new LogInvocationHandler());
         bProxy.show("strawberry and pineapple");
         
+        IBeast b1 = (IBeast)b;
+        IBeast bProxy1 = JDKReflectDynamicProxyFactory.newProxyInstance(b1, new LogInvocationHandler());
+        System.out.println(bProxy1.eat(234, "jb"));
+
+        
         IBeast b2 = new BelleAndBeast();
         //下面b2换成b效果一样
         IBeast bProxy2 = JDKReflectDynamicProxyFactory.newProxyInstance(b2, new LogInvocationHandler());
