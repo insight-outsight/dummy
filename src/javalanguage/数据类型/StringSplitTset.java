@@ -5,7 +5,7 @@ package javalanguage.数据类型;
  * @author xuzhengchao
  *
  */
-public class StringTset {
+public class StringSplitTset {
 
 	public static void main(String[] args) {
 		
