@@ -63,6 +63,8 @@ public enum EnumTypeDemo {
 		EnumTypeDemo zsn = EnumTypeDemo.MT;
 		zsn.sayHello();
 		System.out.println(zsn.getValue());
+		System.out.println("[name]="+zsn.name());
+		System.out.println("===="+EnumTypeDemo.valueOf("MT").getValue());
 		System.out.println(EnumTypeDemo.valueOf(EnumTypeDemo.class, "HT").getMeaning());
 		System.out.println(EnumTypeDemo.valueOf(5));
 

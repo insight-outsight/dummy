@@ -10,7 +10,7 @@ import java.util.TreeMap;
 
 
 
-public class MapLauncher {
+public class LinkedHashMapLauncher {
 
 	   
 	public static void main(String args[]) {
@@ -46,32 +46,5 @@ public class MapLauncher {
 			System.out.print("LinkedHashMap键："+key + "		LinkedHashMap类型："+key.getClass().getName()+"        ");
 			System.out.println("LinkedHashMap值："+value + "	LinkedHashMap类型："+value.getClass().getName());
 		}
-		System.out.println("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		String[] dates = { "a5","f7","e2","d5","e2","10/31/01", "01/01/01", "03/05/01", "02/04/01", "05/04/23" };
-		String[] items = { "yi","er","san","si","wu","Halloween", "New Years", "Birthday", "Anniversary", "造业!!!!!" };
-		
-		Map<String,String> calendarMap = new TreeMap<String,String> ();
-
-		for (int x = 0; x < dates.length; x++){
-			calendarMap.put(dates[x], items[x]);
-		}
-		
-		System.out.println("calendarMap内容x是"+ calendarMap);
-		
-		Set<Map.Entry<String,String>> mappingEntrys = calendarMap.entrySet();
-		System.out.println("object \t\t\tkey\t\tvalue");
-
-		for (Iterator<Map.Entry<String,String>> i = mappingEntrys.iterator(); i.hasNext();) {
-			Map.Entry<String,String> me = (Map.Entry<String,String>) i.next();
-			Object ok = me.getKey();
-			Object ov = me.getValue();
-			System.out.print(me + "\t");
-			System.out.print(ok + "\t");
-			System.out.println(ov);
-		}
-		System.out.println("-------------------------------------------------------");
-		Set<String> sim = calendarMap.keySet();
-		for(String sk : sim)
-			System.out.println(sk+"[]"+calendarMap.get(sk));
 	}
 }
