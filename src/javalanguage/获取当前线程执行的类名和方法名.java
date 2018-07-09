@@ -49,6 +49,7 @@ package javalanguage;
  */
 public class 获取当前线程执行的类名和方法名 {
 	public static void main(String[] args) {
+		
 //		getCaller();
 		System.out.println("-------------------------------------------------");
 		获取当前线程执行的类名和方法名 methodNameGetter = new 获取当前线程执行的类名和方法名();
@@ -77,6 +78,7 @@ public class 获取当前线程执行的类名和方法名 {
 		System.out.println("aam Class Name: [" + clazz + "]，Method Name: " + methodName);
 		methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
 		System.out.println("aam Caller Class Name: [" + clazz + "]，Caller Method Name: " + methodName);
+		
 	}
 
 	public static void getCaller() {
