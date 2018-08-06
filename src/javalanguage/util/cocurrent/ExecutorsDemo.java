@@ -3,6 +3,7 @@ package javalanguage.util.cocurrent;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.SynchronousQueue;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -66,7 +67,7 @@ public class ExecutorsDemo {
             }
         });
         
-        Thread.sleep(1000);  
+        Thread.sleep(10000);  
 
         pool.shutdown();
 //        pool.shutdownNow();
@@ -74,22 +75,6 @@ public class ExecutorsDemo {
         pool.awaitTermination(5000, TimeUnit.MILLISECONDS);
 //        System.out.println(Thread.currentThread().getName() + "主程序退出。。。");  
 //        System.exit(0);
-        System.out.println("fffffffffff"+Integer.MAX_VALUE+","+(Integer.MAX_VALUE+1)+","+((Integer.MAX_VALUE+1)==Integer.MIN_VALUE));
-        System.out.println("一"+Integer.toBinaryString(-1));
-        System.out.println("二"+Integer.toBinaryString(Integer.MAX_VALUE));
-        System.out.println("三"+Integer.toBinaryString(Integer.MIN_VALUE));
-        long b1=2147483648l;
-        long b2=2147483659l;
-
-        Integer a1 = Integer.MAX_VALUE+1;
-        Integer a2 = Integer.MAX_VALUE+2;
-        Integer a3 = (int)b2;
-        Integer a4 = new Long(b1).intValue();
-        System.out.println("111,"+a1);
-        System.out.println("222,"+a2);
-        System.out.println("333,"+a3);
-        System.out.println("444,"+a4);
-        System.out.println(a3-a4);
 
         // 关闭线程池  
 //        pool.shutdown(); 

@@ -53,6 +53,7 @@ public class 获取当前线程执行的类名和方法名 {
 //		getCaller();
 		System.out.println("-------------------------------------------------");
 		获取当前线程执行的类名和方法名 methodNameGetter = new 获取当前线程执行的类名和方法名();
+//		String clazz = new Throwable().getStackTrace()[1].getClassName();
 		String clazz = Thread.currentThread().getStackTrace()[1].getClassName();
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 		System.out.println("Class Name: " + clazz + "，Method Name: " + methodName);

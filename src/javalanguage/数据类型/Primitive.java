@@ -146,6 +146,7 @@ public class Primitive {
 		int wb3 = b3;
 		System.out.println(wb3); //38634
 
+
 	}
 	
 }

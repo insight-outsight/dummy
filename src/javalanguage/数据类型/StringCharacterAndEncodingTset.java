@@ -7,11 +7,13 @@ public class StringCharacterAndEncodingTset {
 	public static void main(String[] args) throws UnsupportedEncodingException {
     	String charsetName = "utf-8";
 //    	String aabbc = "w的et344w09d天";
-    	String aabbc = "f地真𨭎e";// "𨭎", "𠬠", and "𩷶".
+    	String aabbc = "发f地真𨭎e";// "𨭎", "𠬠", and "𩷶".
     	System.out.println("字串符长度为:"+aabbc.length());
     	byte[] bbb11 = aabbc.getBytes("ISO-8859-1");
     	System.out.println("0--"+bbb11.length);
     	printByteBinaryStr(bbb11);
+    	byte[] bbb00 = aabbc.getBytes("GBK");
+    	System.out.println("00--"+bbb00.length);
     	byte[] bbb22 = aabbc.getBytes(charsetName);
     	System.out.println("1--"+bbb22.length);
     	printByteBinaryStr(bbb22);
