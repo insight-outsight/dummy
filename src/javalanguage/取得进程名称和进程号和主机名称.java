@@ -4,14 +4,15 @@ import java.io.IOException;
 import java.lang.management.ManagementFactory;
 import java.lang.management.RuntimeMXBean;
 
-public class 取得Java进程名称和进程号 {
+public class 取得进程名称和进程号和主机名称 {
 
 	public static void main(String[] args) throws InterruptedException, IOException {
-		System.out.println("进程名称："+取得Java进程名称和进程号.class.getSimpleName());
+		System.out.println("进程名称："+取得进程名称和进程号和主机名称.class.getSimpleName());
         int pid = getPid();
         System.out.println("进程pid: " + pid);
 //        System.in.read(); // block the program so that we can do some probing on it
-
+        String hostName = getHostname();
+        System.out.println("主机名称: " + hostName);
 	}
 	
     private static int getPid() {
@@ -24,6 +25,18 @@ public class 取得Java进程名称和进程号 {
             return -1;
         }
     }
+    
+    private static String getHostname() {
+    	RuntimeMXBean runtime = ManagementFactory.getRuntimeMXBean();    
+    	String name = runtime.getName();
+    	System.out.println("runtime.getName()="+name);// result format: "pid@hostname"
+    	try {
+    		return name.substring(name.indexOf('@')+1);
+    	} catch (Exception e) {
+    		return null;
+    	}
+    }
+
 
 }
 
