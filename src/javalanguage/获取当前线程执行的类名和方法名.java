@@ -53,7 +53,25 @@ public class 获取当前线程执行的类名和方法名 {
 //		getCaller();
 		System.out.println("-------------------------------------------------");
 		获取当前线程执行的类名和方法名 methodNameGetter = new 获取当前线程执行的类名和方法名();
-//		String clazz = new Throwable().getStackTrace()[1].getClassName();
+//		String clazz = new Throwable().getStackTrace()[1].getClassName();//main方法中不能用这个，虽然这个据说速度更快
+		/**
+		 * As pointed in many answers below - the new Throwable().getStackTrace() is much faster, because it
+		 *  doesn't need to check this != Thread.currentThread() and bypasses potential JVM overheads of
+		 *   calling it through child-class
+		 *   
+		 *   Thread.currentThread().getStackTrace();
+is fine if you don't care what the first element of the stack is.
+
+new Throwable().getStackTrace();
+will have a defined position for your current method, if that matters.
+
+(new Throwable()).getStackTrace() is faster executing too (see bugs.sun.com/bugdatabase/view_bug.do?bug_id=6375302 ) – MightyE Aug
+
+From: https://stackoverflow.com/questions/1069066/get-current-stack-trace-in-java
+
+另一篇分析：https://www.cnblogs.com/lcchuguo/p/5335689.html
+
+		 */
 		String clazz = Thread.currentThread().getStackTrace()[1].getClassName();
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 		System.out.println("Class Name: " + clazz + "，Method Name: " + methodName);
@@ -63,7 +81,9 @@ public class 获取当前线程执行的类名和方法名 {
 
 	private void anotherMethod() {
 
-		String clazz = this.getClass().getName();
+//		String clazz = this.getClass().getName();
+		String clazz = new Throwable().getStackTrace()[1].getClassName();
+
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 		System.out.println("am Class Name: [" + clazz + "]，Method Name: " + methodName);
 		methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
@@ -74,7 +94,9 @@ public class 获取当前线程执行的类名和方法名 {
 
 	private void anotherAnotherMethod() {
 
-		String clazz = this.getClass().getName();
+//		String clazz = this.getClass().getName();
+		String clazz = new Throwable().getStackTrace()[1].getClassName();
+
 		String methodName = Thread.currentThread().getStackTrace()[1].getMethodName();
 		System.out.println("aam Class Name: [" + clazz + "]，Method Name: " + methodName);
 		methodName = Thread.currentThread().getStackTrace()[2].getMethodName();
