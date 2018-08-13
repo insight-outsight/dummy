@@ -1,18 +1,20 @@
-package com.selffun.clover.algorithm;
+package javalanguage;
 
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
-public class HdzyTset {
+public class 异常打印内容测试 {
 
 	public static void main(String[] args) {
 		try {
 			decrypt("sdtwt12345678900".getBytes());
 		} catch (Exception e) {
 			System.out.println("aaa");
+			//output stack trace
 			e.printStackTrace();
 			System.out.println("ooo");
-			System.out.println("u"+e);
+			//output []javax.crypto.BadPaddingException: Given final block not properly padded
+			System.out.println("[]"+e);
 		}
 	}
 
