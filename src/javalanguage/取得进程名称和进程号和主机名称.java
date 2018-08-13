@@ -22,6 +22,7 @@ public class 取得进程名称和进程号和主机名称 {
 	        System.out.println("runtime.getName()="+name);// result format: "pid@hostname"
             return Integer.parseInt(name.substring(0, name.indexOf('@')));
         } catch (Exception e) {
+        	e.printStackTrace();
             return -1;
         }
     }
@@ -33,6 +34,7 @@ public class 取得进程名称和进程号和主机名称 {
 	    	System.out.println("runtime.getName()="+name);// result format: "pid@hostname"
     		return name.substring(name.indexOf('@')+1);
     	} catch (Exception e) {
+        	e.printStackTrace();
     		return null;
     	}
     }
