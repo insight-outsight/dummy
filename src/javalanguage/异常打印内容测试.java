@@ -3,9 +3,12 @@ package javalanguage;
 import javax.crypto.Cipher;
 import javax.crypto.spec.SecretKeySpec;
 
+import commons.exception.Tset44Exception;
+
 public class 异常打印内容测试 {
 
 	public static void main(String[] args) {
+		/*
 		try {
 			decrypt("sdtwt12345678900".getBytes());
 		} catch (Exception e) {
@@ -15,8 +18,27 @@ public class 异常打印内容测试 {
 			System.out.println("ooo");
 			//output []javax.crypto.BadPaddingException: Given final block not properly padded
 			System.out.println("[]"+e);
-		}
+		}*/
+		int times = 30*10000;
+		throwNPE(times);
+
 	}
+
+	// -XX:-OmitStackTraceInFastThrow后不会省略"cold" built-in exceptions异常堆栈
+	public static void throwNPE(int times) {
+        while(times-- > 0){
+                try {
+                    String value = null;
+                    value.length();
+//                	if(System.currentTimeMillis()>0){
+//                		throw new Tset44Exception("good afternoon");
+//                	}
+                } catch (Exception e) {
+                        e.printStackTrace();
+                }
+        }
+	}
+
 
 	public static byte[] decrypt(byte[] encrypted) throws Exception {
 
