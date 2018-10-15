@@ -1,4 +1,4 @@
-package jdk8.newfeatures;
+package jdk8.newfeatures.time;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
