@@ -71,12 +71,15 @@ public class TimeApILocalDateDemo {
     //===============================================================================
     // 5、日期的加减
     //===============================================================================
+    System.out.println("==================日期的加减===================="); 
     System.out.println(localDate.plusMonths(1)); // 2018-08-23  加一个月
     System.out.println(localDate.plusMonths(-1)); // 2018-06-23 减去一个月，传入负数即可，下面的也是
-    System.out.println(localDate.plusDays(1)); // 2018-07-24 加上一天
+    System.out.println(localDate.plusDays(1)); // 加上一天
+    System.out.println(localDate.plusDays(1).toString()); //  加上一天
     System.out.println(localDate.plusMonths(1)); // 2018-08-23 加上一个月
     System.out.println(localDate.plusWeeks(1)); // 2018-07-30 加上一个星期
- 
+    
+    System.out.println("==================其他计算===================="); 
     //===============================================================================
     // 6、其他计算
     //===============================================================================
