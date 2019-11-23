@@ -7,10 +7,41 @@ import java.util.List;
 import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
+import jdk8.newfeatures.pojo.Person;
+
 public class Lambda_Demo {
 
     public static void main(String[] args) {
+        System.out.println("=========================0=======================");
 
+        List<String> alpha = Arrays.asList("a", "b", "c", "d");
+//        List<String> collect = alpha.stream().map(String::toUpperCase).collect(Collectors.toList());
+        List<String> collect = alpha.stream().map((String n) -> {n.toUpperCase();n+="-";return n;}).collect(Collectors.toList());
+        System.out.println(collect); //[A, B, C, D]
+        List<Integer> num = Arrays.asList(1,2,3,4,5);
+        List<Integer> collect1 = num.stream().map(n -> n * 2).collect(Collectors.toList());
+        System.out.println(collect1); //[2, 4, 6, 8, 10]
+        
+        List<Person> staff = Arrays.asList(
+                new Person("tom", "cat"),
+                new Person("chan", "jack"),
+                new Person("wan", "er")
+        );
+        List<String> collectPersons = staff.stream().map(x -> x.getFirstName()).collect(Collectors.toList());
+        System.out.println(collectPersons); 
+        
+        List<Person> result = staff.stream().map(x -> {
+            Person obj = new Person();
+            obj.setFirstName(x.getFirstName());
+            if ("tom".equals(x.getFirstName())) {
+                obj.setFirstName("x");
+            }
+            obj.setLastName(x.getLastName());
+            return obj;
+        }).collect(Collectors.toList());
+
+        System.out.println(result);
+        
         System.out.println("=========================1=======================");
 
         List<Integer> list = new ArrayList<>();
@@ -20,6 +51,9 @@ public class Lambda_Demo {
         // 直接打印
         list.forEach(i -> System.out.println("print-"+i));
 //        list.forEach(System.out::println);
+        list.forEach(i -> {
+            System.out.println("print-"+i);
+            System.out.println("tnirp-"+i);});
 
         System.out.println("=========================2=======================");
 
