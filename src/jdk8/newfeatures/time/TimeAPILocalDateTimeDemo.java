@@ -1,8 +1,10 @@
 package jdk8.newfeatures.time;
 
 import java.time.DayOfWeek;
+import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 
 /**
  * 
@@ -22,7 +24,18 @@ public class TimeAPILocalDateTimeDemo {
     //===============================================================================
     LocalDateTime localDateTime = LocalDateTime.now();
     System.out.println(localDateTime); // 2018-07-26T14:47:44.144
- 
+    
+    System.out.println("日期:"+localDateTime.toLocalDate() + ", 时间:" +localDateTime.toLocalTime());
+
+    //===============================================================================
+    // 指定创建日期时间
+    //===============================================================================
+    LocalDateTime ldt = LocalDateTime.of(2008, 2, 29, 23, 59, 50);
+    DateTimeFormatter format = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+    String ldtStr = ldt.format(format); // 2008-02-29 23:59:59
+    System.out.println("ldtStr is "+ldtStr);
+    System.out.println("ldtStr2 is "+format.format(ldt));
+    
     //===============================================================================
     // 2、构造日期时间
     //===============================================================================
