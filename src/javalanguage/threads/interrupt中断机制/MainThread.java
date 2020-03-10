@@ -1,4 +1,4 @@
-package javalanguage.threads.interrupt机制;
+package javalanguage.threads.interrupt中断机制;
 public class MainThread {
     public static void main(String args[]){
         Thread thread = new SubThread();

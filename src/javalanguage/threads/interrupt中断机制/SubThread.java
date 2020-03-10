@@ -1,4 +1,4 @@
-package javalanguage.threads.interrupt机制;
+package javalanguage.threads.interrupt中断机制;
 public class SubThread extends Thread {
     public void run(){
         super.run();
