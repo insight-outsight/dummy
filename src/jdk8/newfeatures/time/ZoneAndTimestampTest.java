@@ -15,12 +15,21 @@ public class ZoneAndTimestampTest {
         long dateS = System.currentTimeMillis();
         System.out.println(dateS);
         SimpleDateFormat outputFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        System.out.println("Default:"+outputFormat.format(dateS));
+        System.out.println("Local:"+outputFormat.format(dateS));
+        
+        TimeZone timeZoneUTC = TimeZone.getTimeZone("UTC");
+        SimpleDateFormat outputFormatUTC = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        outputFormatUTC.setTimeZone(timeZoneUTC);
+        System.out.println("UTC:"+outputFormatUTC.format(dateS));
         
         TimeZone timeZoneNY = TimeZone.getTimeZone("America/New_York");
         SimpleDateFormat outputFormatUS = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.US);
         outputFormatUS.setTimeZone(timeZoneNY);
         System.out.println("NY:"+outputFormatUS.format(dateS));
+        
+        TimeZone timeZoneLA = TimeZone.getTimeZone("America/Los_Angeles");
+        outputFormatUS.setTimeZone(timeZoneLA);
+        System.out.println("LA:"+outputFormatUS.format(dateS));
 
         TimeZone timeZoneSH = TimeZone.getTimeZone("Asia/Shanghai");
         SimpleDateFormat outputFormatCHINA = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA);
