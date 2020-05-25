@@ -12,7 +12,7 @@ public interface Filter {
      * return result;
      * </code>
      * 
-     * @see com.alibaba.dubbo.rpc.Invoker#invoke(Invocation)
+     * @see com.ProxyFactory.dubbo.rpc.Invoker#invoke(Invocation)
 	 * @param invoker service
 	 * @param invocation invocation.
 	 * @return invoke result.
